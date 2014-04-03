@@ -96,6 +96,9 @@
 //        ufo2.position = ccp(800,200);
 //        [self addChild:ufo2];
 
+        self.ufo1 = [CCSprite spriteWithImageNamed:@"ufo.png"];
+        ufo1.position = ccp(800,200);
+        
         self.ufo2 = [CCSprite spriteWithImageNamed:@"ufoIII.png"];
         ufo2.position = ccp(800,500);
         
@@ -111,6 +114,7 @@
 //        [self.plane runAction:[CCActionSequence actions:moveToAction, callBack, nil]];
         
         [self addChild:self.plane];
+        [self addChild:self.ufo1];
         [self addChild:self.ufo2];
         self.userInteractionEnabled = TRUE;
         

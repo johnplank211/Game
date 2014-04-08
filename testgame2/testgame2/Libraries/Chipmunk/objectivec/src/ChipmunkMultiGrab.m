@@ -247,7 +247,7 @@ BestGrab(NSArray *grabs, cpVect pos)
 	[_space remove:grab];
 	[_grabs removeObject:grab];
 	
-	[grab autorelease];
+	//[grab autorelease];
 	return (grab.grabbedShape ? grab : nil);
 }
 

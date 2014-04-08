@@ -12,6 +12,7 @@
 #import "cocos2d-ui.h"
 
 
+
 // -----------------------------------------------------------------------
 
 /**
@@ -23,6 +24,9 @@
     CCSprite *plane;
     CCSprite *ufo1;
     CCSprite *ufo2;
+    NSMutableArray * _ufo2;
+    NSMutableArray * _ufo1;
+    
 }
 
 

@@ -19,6 +19,7 @@
 @implementation HelloWorldScene
 {
     CCSprite *_sprite;
+    CCPhysicsNode *_physicsWorld;
 }
 
 
@@ -65,34 +66,62 @@
 }
 
 
+
+
+- (BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair monsterCollision:(CCNode *)monster projectileCollision:(CCNode *)projectile {
+    [monster removeFromParent];
+    [projectile removeFromParent];
+    [[OALSimpleAudio sharedInstance] playEffect:@"boom.wav"];
+    
+    return YES;
+}
+
+
+
+
+
+
 - (void) addMonster {
     
     self.ufo2 = [CCSprite spriteWithImageNamed:@"ufoIII.png"];
-    // Determine where to spawn the monster along the Y axis
-    CGSize s = [[CCDirector sharedDirector] viewSize];
+    
+    _physicsWorld = [CCPhysicsNode node];
+    _physicsWorld.gravity = ccp(0,0);
+    //_physicsWorld.debugDraw = YES;
+    _physicsWorld.collisionDelegate = self;
+    [self addChild:_physicsWorld];
+
+    
+    // 1
     int minY = self.ufo2.contentSize.height / 2;
-    int maxY = s.height - self.ufo2.contentSize.height/2;
+    int maxY = self.contentSize.height - self.ufo2.contentSize.height / 2;
     int rangeY = maxY - minY;
-    int actualY = (arc4random() % rangeY) + minY;
+    int randomY = (arc4random() % rangeY) + minY;
     
-    // Create the monster slightly off-screen along the right edge,
-    // and along a random position along the Y axis as calculated above
-    self.ufo2.position = ccp(s.width + self.ufo2.contentSize.width/2, actualY);
-    [self addChild:self.ufo2];
+    // 2
+    self.ufo2.position = CGPointMake(self.contentSize.width + self.ufo2.contentSize.width/2, randomY);
+    //[self addChild:self.ufo2];
     
-    // Determine speed of the monster
+    // 3
     int minDuration = 2.0;
     int maxDuration = 4.0;
     int rangeDuration = maxDuration - minDuration;
-    int actualDuration = (arc4random() % rangeDuration) + minDuration;
+    int randomDuration = (arc4random() % rangeDuration) + minDuration;
     
-    // Create the actions
-    CCActionMoveTo * actionMove = [CCActionMoveTo actionWithDuration:actualDuration
-                                                            position:ccp(-self.ufo2.contentSize.width/2, actualY)];
-    CCActionCallBlock * actionMoveDone = [CCActionCallBlock actionWithBlock:^(CCNode *node) {
-        [node removeFromParentAndCleanup:YES];
-    }];
-    [self.ufo2 runAction:[CCActionSequence actions:actionMove, actionMoveDone, nil]];
+    
+    
+    
+    self.ufo2.physicsBody = [CCPhysicsBody bodyWithRect:(CGRect){CGPointZero, self.ufo2.contentSize} cornerRadius:1];
+    self.ufo2.physicsBody.collisionGroup = @"monsterGroup";
+    self.ufo2.physicsBody.collisionType  = @"monsterCollision";
+    [_physicsWorld addChild:self.ufo2];
+
+
+    
+    // 4
+    CCAction *actionMove = [CCActionMoveTo actionWithDuration:randomDuration position:CGPointMake(-self.ufo2.contentSize.width/2, randomY)];
+    CCAction *actionRemove = [CCActionRemove action];
+    [self.ufo2 runAction:[CCActionSequence actionWithArray:@[actionMove,actionRemove]]];
     
 }
 
@@ -108,50 +137,35 @@
 
         
       CGSize winSize = [CCDirector sharedDirector].viewSize;
-        
-
-   //self.userInteractionEnabled = YES;
-        
-    
-//    CCSprite *plane = [CCSprite spriteWithImageNamed:@"plane.png"];
-//    plane.position = ccp(200,200);
-//    [self addChild:plane];
-//
-//        CCSprite *ufo1 = [CCSprite spriteWithImageNamed:@"ufo.png"];
-//        ufo1.position = ccp(800,500);
-//        [self addChild:ufo1];
-//        
-//        CCSprite *ufo2 = [CCSprite spriteWithImageNamed:@"ufoIII.png"];
-//        ufo2.position = ccp(800,200);
-//        [self addChild:ufo2];
-
-        self.ufo1 = [CCSprite spriteWithImageNamed:@"ufo.png"];
-        ufo1.position = ccp(800,200);
-        
+                
 //        self.ufo2 = [CCSprite spriteWithImageNamed:@"ufoIII.png"];
 //        ufo2.position = ccp(800,500);
         
         self.plane = [CCSprite spriteWithImageNamed:@"plane.png"];
         plane.position = ccp(plane.contentSize.width/2, winSize.height/2);
-//   
-//        int x = arc4random() %768;
-//        int y = arc4random() % 1024;
-//        
-//        id moveToAction = [CCActionMoveTo actionWithDuration:2.0 position:ccp(x,y)];
-//        id callBack = [CCActionCallFunc actionWithTarget:self selector:@selector(animation_finsihed)];
-//        
-//        [self.plane runAction:[CCActionSequence actions:moveToAction, callBack, nil]];
+
+         _physicsWorld = [CCPhysicsNode node];
+         _physicsWorld.gravity = ccp(0,0);
+         //_physicsWorld.debugDraw = YES;
+         _physicsWorld.collisionDelegate = self;
+         [self addChild:_physicsWorld];
+         
+        [[OALSimpleAudio sharedInstance] preloadEffect:@"boom.wav"];
+        [[OALSimpleAudio sharedInstance] preloadEffect:@"gunfire.wav"];
         
-        [[OALSimpleAudio sharedInstance] preloadEffect:@"laser.wav"];
-        [[OALSimpleAudio sharedInstance] preloadEffect:@"enemymachinegun.wav"];
-        
-        [self addChild:self.plane z:100];
-        [self addChild:self.ufo1];
-        //[self addChild:self.ufo2];
+        //[self addChild:self.plane z:100];
+         
+         
+         self.plane.physicsBody = [CCPhysicsBody bodyWithRect:(CGRect){CGPointZero, self.plane.contentSize} cornerRadius:0]; // 1
+         self.plane.physicsBody.collisionGroup = @"playerGroup"; // 2
+         [_physicsWorld addChild:self.plane z:100];
+         
+         
+       // [self addChild:self.ufo2];
         self.userInteractionEnabled = TRUE;
         
     }
-    //[self schedule:@selector(gameLogic:) interval:0.05];
+    [self schedule:@selector(gameLogic:) interval:2];
     return self;
 }
 
@@ -165,45 +179,46 @@
 
 -(void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
     
-    // Choose one of the touches to work with
-    //UITouch *touch = [touches anyObject];
-    CGPoint location = [touch locationInNode:self];
+    CGPoint touchLocation = [touch locationInNode:self];
     
-    // Set up initial location of projectile
-    CGSize winSize = [[CCDirector sharedDirector] viewSize];
-    self.ufo1 = [CCSprite spriteWithImageNamed:@"ufo.png"];
-    self.ufo1.position = ccp(plane.contentSize.width/2, winSize.height/2);
+ 
+    int     targetX   = 1000 + 0;
+    int     targetY   = 0 + self.plane.position.y;
+    CGPoint targetPosition = ccp(targetX,targetY);
     
-    // Determine offset of location to projectile
-    CGPoint offset = ccpSub(location, self.ufo1.position);
+ 
+    CCSprite *projectile = [CCSprite spriteWithImageNamed:@"bullet.png"];
+    projectile.position = self.plane.position;
+   
     
-    // Bail out if you are shooting down or backwards
-    if (offset.x <= 0) return;
+    projectile.physicsBody = [CCPhysicsBody bodyWithCircleOfRadius:projectile.contentSize.width/2.0f andCenter:projectile.anchorPointInPoints];
+   
     
-    // Ok to add now - we've double checked position
-    [self addChild:self.ufo1];
+    projectile.physicsBody.collisionGroup = @"playerGroup";
+    projectile.physicsBody.collisionType  = @"projectileCollision";
     
-    int realX = winSize.width + (self.ufo1.contentSize.width/2);
-    float ratio = (float) offset.y / (float) offset.x;
-    int realY = (realX * ratio) + self.ufo1.position.y;
-    CGPoint realDest = ccp(realX, realY);
     
-    // Determine the length of how far you're shooting
-    int offRealX = realX - self.ufo1.position.x;
-    int offRealY = realY - self.ufo1.position.y;
-    float length = sqrtf((offRealX*offRealX)+(offRealY*offRealY));
-    float velocity = 480/1; // 480pixels/1sec
-    float realMoveDuration = length/velocity;
-    [[OALSimpleAudio sharedInstance] playBg:@"enemymachinegun.wav" loop:NO];
-    // Move projectile to actual endpoint
-    [ufo1 runAction:
-     [CCActionSequence actions:
-      [CCActionMoveTo actionWithDuration:realMoveDuration position:realDest],
-      [CCActionCallBlock actionWithBlock:^(CCNode *node) {
-         [node removeFromParentAndCleanup:YES];
-     }],
-      nil]];
+    //_physicsWorld.debugDraw = YES;
+    [_physicsWorld addChild:projectile];
     
+    //[[OALSimpleAudio sharedInstance] playEffect:@"enemymachinegun.wav"];
+    
+    
+    float distance = powf(self.plane.position.x - touchLocation.x, 2) + powf(self.plane.position.y - touchLocation.y, 2);
+    
+        distance = sqrtf(distance);
+    
+        if (distance <= 55)
+        {
+            //[self.plane runAction:[CCActionRotateBy actionWithDuration:2.0 angle:360]];
+            [[OALSimpleAudio sharedInstance] playBg:@"gunfire.wav" loop:NO];
+            
+            
+            CCActionMoveTo *actionMove   = [CCActionMoveTo actionWithDuration:1.5f position:targetPosition];
+            CCActionRemove *actionRemove = [CCActionRemove action];
+            [projectile runAction:[CCActionSequence actionWithArray:@[actionMove,actionRemove]]];
+        }
+
 }
 
 
@@ -245,16 +260,6 @@
 
 
 
-//- (void)dealloc
-//{
-    
-    
-    //[_ufo1 release];
-    //_ufo1 = nil;
-    //[_ufo2 release];
-    //_ufo2 = nil;
-    // clean up code goes here
-//}
 
 // -----------------------------------------------------------------------
 #pragma mark - Enter & Exit

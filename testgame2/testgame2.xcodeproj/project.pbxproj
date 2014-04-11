@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B474C11C18F5FCAC003B1EF3 /* ufo.png in Resources */ = {isa = PBXBuildFile; fileRef = B474C11B18F5FCAC003B1EF3 /* ufo.png */; };
+		B498641E18F656BA0051C6F9 /* ufoIII.png in Resources */ = {isa = PBXBuildFile; fileRef = B498641D18F656BA0051C6F9 /* ufoIII.png */; };
+		B498642218F65AC50051C6F9 /* bullet.png in Resources */ = {isa = PBXBuildFile; fileRef = B498642118F65AC50051C6F9 /* bullet.png */; };
+		B498642418F6DA3C0051C6F9 /* boom.wav in Resources */ = {isa = PBXBuildFile; fileRef = B498642318F6DA3C0051C6F9 /* boom.wav */; };
+		B498642618F6DA560051C6F9 /* gunfire.wav in Resources */ = {isa = PBXBuildFile; fileRef = B498642518F6DA560051C6F9 /* gunfire.wav */; };
 		B4D474FF18EE17B4008E2BE8 /* laser.wav in Resources */ = {isa = PBXBuildFile; fileRef = B4D474FE18EE17B4008E2BE8 /* laser.wav */; };
 		B4E06DFE18EC6125004FA9EB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4E06DFD18EC6125004FA9EB /* QuartzCore.framework */; };
 		B4E06E0018EC6125004FA9EB /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4E06DFF18EC6125004FA9EB /* OpenGLES.framework */; };
@@ -220,9 +225,7 @@
 		B4E070C918EDDC5F004FA9EB /* enemymachinegun.wav in Resources */ = {isa = PBXBuildFile; fileRef = B4E070C818EDDC5F004FA9EB /* enemymachinegun.wav */; };
 		B4E070CB18EDF26C004FA9EB /* planeSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = B4E070CA18EDF26C004FA9EB /* planeSound.wav */; };
 		B4E070CF18EDF4A5004FA9EB /* ufoSecond.png in Resources */ = {isa = PBXBuildFile; fileRef = B4E070CE18EDF4A5004FA9EB /* ufoSecond.png */; };
-		B4E070D118EDF4FD004FA9EB /* ufo.png in Resources */ = {isa = PBXBuildFile; fileRef = B4E070D018EDF4FD004FA9EB /* ufo.png */; };
 		B4E070D318EDF76F004FA9EB /* ufoII.png in Resources */ = {isa = PBXBuildFile; fileRef = B4E070D218EDF76F004FA9EB /* ufoII.png */; };
-		B4E070D518EDF831004FA9EB /* ufoIII.png in Resources */ = {isa = PBXBuildFile; fileRef = B4E070D418EDF831004FA9EB /* ufoIII.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -236,6 +239,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B474C11B18F5FCAC003B1EF3 /* ufo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ufo.png; sourceTree = "<group>"; };
+		B498641D18F656BA0051C6F9 /* ufoIII.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ufoIII.png; sourceTree = "<group>"; };
+		B498642118F65AC50051C6F9 /* bullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bullet.png; sourceTree = "<group>"; };
+		B498642318F6DA3C0051C6F9 /* boom.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = boom.wav; sourceTree = "<group>"; };
+		B498642518F6DA560051C6F9 /* gunfire.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gunfire.wav; sourceTree = "<group>"; };
 		B4D474FE18EE17B4008E2BE8 /* laser.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = laser.wav; sourceTree = "<group>"; };
 		B4E06DFA18EC6125004FA9EB /* testgame2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testgame2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4E06DFD18EC6125004FA9EB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -672,9 +680,7 @@
 		B4E070C818EDDC5F004FA9EB /* enemymachinegun.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = enemymachinegun.wav; sourceTree = "<group>"; };
 		B4E070CA18EDF26C004FA9EB /* planeSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = planeSound.wav; sourceTree = "<group>"; };
 		B4E070CE18EDF4A5004FA9EB /* ufoSecond.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ufoSecond.png; sourceTree = "<group>"; };
-		B4E070D018EDF4FD004FA9EB /* ufo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ufo.png; sourceTree = "<group>"; };
 		B4E070D218EDF76F004FA9EB /* ufoII.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ufoII.png; sourceTree = "<group>"; };
-		B4E070D418EDF831004FA9EB /* ufoIII.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ufoIII.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -746,10 +752,13 @@
 		B4E06E1618EC6125004FA9EB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				B4E070D418EDF831004FA9EB /* ufoIII.png */,
-				B4E070D018EDF4FD004FA9EB /* ufo.png */,
 				B4E070D218EDF76F004FA9EB /* ufoII.png */,
+				B474C11B18F5FCAC003B1EF3 /* ufo.png */,
+				B498642318F6DA3C0051C6F9 /* boom.wav */,
+				B498642118F65AC50051C6F9 /* bullet.png */,
+				B498642518F6DA560051C6F9 /* gunfire.wav */,
 				B4E070CE18EDF4A5004FA9EB /* ufoSecond.png */,
+				B498641D18F656BA0051C6F9 /* ufoIII.png */,
 				B4D474FE18EE17B4008E2BE8 /* laser.wav */,
 				B4E070CA18EDF26C004FA9EB /* planeSound.wav */,
 				B4E070C818EDDC5F004FA9EB /* enemymachinegun.wav */,
@@ -1682,10 +1691,13 @@
 				B4E070C918EDDC5F004FA9EB /* enemymachinegun.wav in Resources */,
 				B4E070CB18EDF26C004FA9EB /* planeSound.wav in Resources */,
 				B4E070CF18EDF4A5004FA9EB /* ufoSecond.png in Resources */,
-				B4E070D118EDF4FD004FA9EB /* ufo.png in Resources */,
 				B4E070D318EDF76F004FA9EB /* ufoII.png in Resources */,
-				B4E070D518EDF831004FA9EB /* ufoIII.png in Resources */,
 				B4D474FF18EE17B4008E2BE8 /* laser.wav in Resources */,
+				B474C11C18F5FCAC003B1EF3 /* ufo.png in Resources */,
+				B498641E18F656BA0051C6F9 /* ufoIII.png in Resources */,
+				B498642218F65AC50051C6F9 /* bullet.png in Resources */,
+				B498642418F6DA3C0051C6F9 /* boom.wav in Resources */,
+				B498642618F6DA560051C6F9 /* gunfire.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

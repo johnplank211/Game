@@ -39,7 +39,7 @@
     
    // CGSize windowSize = [[CCDirector sharedDirector] ];
     
-    CCSprite *background = [CCSprite spriteWithImageNamed:@"background.png"];
+    CCSprite *background = [CCSprite spriteWithImageNamed:@"bgii.png"];
     background.anchorPoint = ccp(0, 0);
     [layer addChild:background z:-1];
     
@@ -85,24 +85,14 @@
     
     self.ufo2 = [CCSprite spriteWithImageNamed:@"ufoIII.png"];
     
-    _physicsWorld = [CCPhysicsNode node];
-    _physicsWorld.gravity = ccp(0,0);
-    //_physicsWorld.debugDraw = YES;
-    _physicsWorld.collisionDelegate = self;
-    [self addChild:_physicsWorld];
-
-    
-    // 1
     int minY = self.ufo2.contentSize.height / 2;
     int maxY = self.contentSize.height - self.ufo2.contentSize.height / 2;
     int rangeY = maxY - minY;
     int randomY = (arc4random() % rangeY) + minY;
     
-    // 2
     self.ufo2.position = CGPointMake(self.contentSize.width + self.ufo2.contentSize.width/2, randomY);
     //[self addChild:self.ufo2];
     
-    // 3
     int minDuration = 2.0;
     int maxDuration = 4.0;
     int rangeDuration = maxDuration - minDuration;
@@ -118,7 +108,6 @@
 
 
     
-    // 4
     CCAction *actionMove = [CCActionMoveTo actionWithDuration:randomDuration position:CGPointMake(-self.ufo2.contentSize.width/2, randomY)];
     CCAction *actionRemove = [CCActionRemove action];
     [self.ufo2 runAction:[CCActionSequence actionWithArray:@[actionMove,actionRemove]]];
@@ -141,7 +130,7 @@
 //        self.ufo2 = [CCSprite spriteWithImageNamed:@"ufoIII.png"];
 //        ufo2.position = ccp(800,500);
         
-        self.plane = [CCSprite spriteWithImageNamed:@"plane.png"];
+        self.plane = [CCSprite spriteWithImageNamed:@"planeii.png"];
         plane.position = ccp(plane.contentSize.width/2, winSize.height/2);
 
          _physicsWorld = [CCPhysicsNode node];

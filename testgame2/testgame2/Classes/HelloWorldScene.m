@@ -378,22 +378,6 @@
     int     targetY   = 0 + self.plane.position.y;
     CGPoint targetPosition = ccp(targetX,targetY);
     
- 
-//    CCSprite *projectile = [CCSprite spriteWithImageNamed:@"bullet.png"];
-//    projectile.position = self.plane.position;
-//   
-//    
-//    projectile.physicsBody = [CCPhysicsBody bodyWithCircleOfRadius:projectile.contentSize.width/2.0f andCenter:projectile.anchorPointInPoints];
-//   
-//    
-//    projectile.physicsBody.collisionGroup = @"playerGroup";
-//    projectile.physicsBody.collisionType  = @"projectileCollision";
-    
-    
-    //_physicsWorld.debugDraw = YES;
-//    [_physicsWorld addChild:projectile];
-    
-       
     
     float distance = powf(self.plane.position.x - touchLocation.x, 2) + powf(self.plane.position.y - touchLocation.y, 2);
     

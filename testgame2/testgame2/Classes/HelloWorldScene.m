@@ -123,6 +123,9 @@
     [ufoo removeFromParent];
     [[OALSimpleAudio sharedInstance] playEffect:@"boom.wav"];
     
+   // _lives = 1;
+    
+    
     if (_lives <= 0) {
         [planeHero removeFromParent];
         [planeHero stopAllActions];
@@ -140,8 +143,16 @@
     
         }
     
-    return YES;
+//    if (_lives <= 0) {
+//        [planeHero removeFromParent];
+//        [planeHero stopAllActions];
+//        planeHero.visible = FALSE;
+//        [self endScene:kEndReasonLose];
+//    }
+
+
     
+    return YES;
 }
 
 
@@ -224,13 +235,6 @@
          [self schedule:@selector(gameLogic:) interval:1];
          
          _lives = 1;
-//         double curTime = CACurrentMediaTime();
-//         _gameOverTime = curTime + 05.0;
-         
-         
-        
-         
-         
          _score              = 0;
          _label              = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d", _score]
                                                   fontName:@"Super Mario Bros Alphabet"

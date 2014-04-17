@@ -232,7 +232,7 @@
          
         self.userInteractionEnabled = TRUE;
                  
-         [self schedule:@selector(gameLogic:) interval:.05];
+         [self schedule:@selector(gameLogic:) interval:1];
          
          _lives = 2;
          _score              = 0;
@@ -378,7 +378,7 @@
     int     targetY   = 0 + self.plane.position.y;
     CGPoint targetPosition = ccp(targetX,targetY);
     
-    
+ 
     float distance = powf(self.plane.position.x - touchLocation.x, 2) + powf(self.plane.position.y - touchLocation.y, 2);
     
         distance = sqrtf(distance);

@@ -51,48 +51,41 @@
     return scene;
 }
 
+
+-(void) animation_finsihed
+{
+    
+    
+    int x = arc4random() %320;
+    int y = arc4random() % 480;
+    
+    id moveToAction = [CCActionMoveTo actionWithDuration:2.0 position:ccp(x,y)];
+    id callBack = [CCActionCallFunc actionWithTarget:self selector:@selector(animation_finsihed)];
+    
+    
+    [self.plane runAction:[CCActionSequence actions:moveToAction, callBack, nil]];
+    
+}
+
+
+
+
+
 // -----------------------------------------------------------------------
 
-- (BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)triple monsterCollision:(CCNode *)monster projectileCollision:(CCNode *)projectile
+- (BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)triple monsterCollision:(CCNode *)monster projectileCollision:(CCNode *)projectile 
 {
     [monster removeFromParent];
     [projectile removeFromParent];
     
     [[OALSimpleAudio sharedInstance] playEffect:@"boom.wav"];
-    
-    
-    
-    
+
     if (_score >= 0)
     {
         
         [self endScene:kEndReasonWin];
     }
     
-//    _lives = 100;
-//    
-//     _gameOverTime =  05.0;
-//    
-//    
-//    if (CGRectIntersectsRect(planeHero.boundingBox, monster.boundingBox)) {
-//        monster.visible = NO;
-//        [planeHero runAction:[CCActionBlink actionWithDuration:1.0 blinks:9]];
-//        _lives--;
-//        //[planeHero removeFromParent];
-//        
-//        
-//        if (_lives <= 0) {
-//            //[planeHero removeFromParent];
-//            [planeHero stopAllActions];
-//            planeHero.visible = FALSE;
-//            [self endScene:kEndReasonLose];
-//        } else if (_score >= 2) {
-//            [self endScene:kEndReasonWin];
-//        }
-//
-//    }
-//    
-     
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"boom.plist"];
     
     CCSpriteBatchNode *spriteSheet = [CCSpriteBatchNode batchNodeWithFile:@"boom.png"];
@@ -117,15 +110,6 @@
     
     [spriteSheet addChild:self.ufo2];
     
-    
-
-    
-    
-    
-    
-    
-    
-    
     _score++;
     [_label setString:[NSString stringWithFormat:@"score: %d",_score]];
     
@@ -134,6 +118,31 @@
 
 
 
+- (BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)triple monsterCollision:(CCNode *)ufoo planeCollision:(CCNode *)planeHero
+{
+    [ufoo removeFromParent];
+    [[OALSimpleAudio sharedInstance] playEffect:@"boom.wav"];
+    
+    if (_lives <= 0) {
+        [planeHero removeFromParent];
+        [planeHero stopAllActions];
+        planeHero.visible = FALSE;
+        [self endScene:kEndReasonLose];
+    }
+    
+    
+    if (CGRectIntersectsRect(planeHero.boundingBox, ufoo.boundingBox)) {
+            ufoo.visible = NO;
+            [planeHero runAction:[CCActionBlink actionWithDuration:1.0 blinks:9]];
+            _lives--;
+            
+            
+    
+        }
+    
+    return YES;
+    
+}
 
 
 
@@ -168,6 +177,8 @@
     CCAction *actionRemove = [CCActionRemove action];
     [self.ufo2 runAction:[CCActionSequence actionWithArray:@[actionMove,actionRemove]]];
     
+    
+    
 }
 
 
@@ -185,8 +196,12 @@
          
       CGSize winSize = [CCDirector sharedDirector].viewSize;
         
+         
+         
+         
         self.plane = [CCSprite spriteWithImageNamed:@"planeii.png"];
         plane.position = ccp(plane.contentSize.width/2, winSize.height/2);
+         
 
          _physicsWorld = [CCPhysicsNode node];
          _physicsWorld.gravity = ccp(0,0);
@@ -197,7 +212,7 @@
         [[OALSimpleAudio sharedInstance] preloadEffect:@"boom.wav"];
         [[OALSimpleAudio sharedInstance] preloadEffect:@"gunfire.wav"];
         
-         self.plane.physicsBody = [CCPhysicsBody bodyWithRect:(CGRect){CGPointZero, self.plane.contentSize} cornerRadius:0]; // 1
+         self.plane.physicsBody = [CCPhysicsBody bodyWithRect:(CGRect){CGPointZero, self.plane.contentSize} cornerRadius:0];
          self.plane.physicsBody.collisionGroup = @"playerGroup";
          plane.physicsBody.collisionType  = @"planeCollision";
          [_physicsWorld addChild:self.plane z:100];
@@ -208,9 +223,9 @@
                  
          [self schedule:@selector(gameLogic:) interval:1];
          
-         _lives = 3;
-         double curTime = CACurrentMediaTime();
-         _gameOverTime = curTime + 05.0;
+         _lives = 1;
+//         double curTime = CACurrentMediaTime();
+//         _gameOverTime = curTime + 05.0;
          
          
         
@@ -243,13 +258,13 @@
          
          [self addChild:resume z:100];
 
-         
+         //_lives = 2;
                  
     }
     
     
     return self;
-    
+        
     
 }
 
@@ -308,8 +323,6 @@
     
     CGSize winSize = [CCDirector sharedDirector].viewSize;
     
-   
-    
     
     NSString *message;
     if (endReason == kEndReasonWin) {
@@ -318,9 +331,7 @@
         message = @"You lose!";
     }
     
-        
-    
-    //CCLabelBMFont *label;
+ 
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         _label2 = [CCLabelBMFont labelWithString:message fntFile:@"Arial-hd.fnt"];
     } else {
@@ -330,20 +341,13 @@
     _label2.color        = [CCColor whiteColor];
     _label2.position     = ccp(0.5f, 0.8f);
     [self addChild:_label2];
-    
-    
-    
-    
+  
     CCButton *restartItem = [CCButton buttonWithTitle:@"Restart"];
     [restartItem setTarget:self selector:@selector(restartTapped:)];
     restartItem.scale = 0.1;
     restartItem.position = ccp(winSize.width/2, winSize.height * 0.2);
     
-
     [self addChild:restartItem];
-    
-
-    
     
     [restartItem runAction:[CCActionScaleTo actionWithDuration:0.5 scale:1.0]];
     
@@ -355,43 +359,9 @@
 
 -(void)gameLogic:(CCTime)dt
 {
-   
-    
-    _lives = 1;
-    
-    _gameOverTime =  05.0;
-    
-    
-    
-    
-           
-    
-    
-    
-    if (CGRectIntersectsRect(plane.boundingBox, ufo2.boundingBox)) {
-        ufo2.visible = NO;
-        [plane runAction:[CCActionBlink actionWithDuration:1.0 blinks:9]];
-        _lives--;
-        //[planeHero removeFromParent];
-        
-        
-        if (_score >= 2) {
-            [plane removeFromParent];
-            [plane stopAllActions];
-            plane.visible = FALSE;
-            [self endScene:kEndReasonLose];
-        } else if (_score >= 2) {
-            [self endScene:kEndReasonWin];
-        }
-        
-    }
-
-    
     
     [self addMonster];
-    
-    
-       
+     
 }
 
 
@@ -399,7 +369,6 @@
 -(void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
     
     CGPoint touchLocation = [touch locationInNode:self];
-    
  
     int     targetX   = 1000 + 0;
     int     targetY   = 0 + self.plane.position.y;
@@ -431,52 +400,17 @@
             //[self.plane runAction:[CCActionRotateBy actionWithDuration:2.0 angle:360]];
             [[OALSimpleAudio sharedInstance] playBg:@"gunfire.wav" loop:NO];
             
-            
             CCActionMoveTo *actionMove   = [CCActionMoveTo actionWithDuration:1.5f position:targetPosition];
             CCActionRemove *actionRemove = [CCActionRemove action];
             [projectile runAction:[CCActionSequence actionWithArray:@[actionMove,actionRemove]]];
         }
 
+    if (_lives <= 0) {
+        [projectile removeFromParent];
+        [projectile stopAllActions];
+        [[OALSimpleAudio sharedInstance] playBg:@"" loop:NO];
+    }
 }
-
-
-
-
-
-//-(void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
-//{
-//    CGPoint touchLoc = [touch locationInNode:self];    
-//    //CCLOG(@"Move sprite to @ %@",NSStringFromCGPoint(location));
-//    
-//    
-//    CCLOG(@"Move sprite to @ %@",NSStringFromCGPoint(touchLoc));
-//    float distance = powf(self.plane.position.x - touchLoc.x, 2) + powf(self.plane.position.y - touchLoc.y, 2);
-//    
-//    distance = sqrtf(distance);
-//    
-//    if (distance <= 55)
-//    {
-//        [self.plane runAction:[CCActionRotateBy actionWithDuration:2.0 angle:360]];
-//        [[OALSimpleAudio sharedInstance] playBg:@"enemymachinegun.wav" loop:NO];
-//    }
-//    
-//    float distance1 = powf(self.ufo2.position.x - touchLoc.x, 2) + powf(self.ufo2.position.y - touchLoc.y, 2);
-//    
-//    distance1 = sqrtf(distance1);
-//    
-//    if (distance1 <= 55)
-//    {
-//        //[self.ufo2 runAction:[CCActionRotateBy actionWithDuration:2.0 angle:360]];
-//        [[OALSimpleAudio sharedInstance] playBg:@"laser.wav" loop:NO];
-//    }
-//
-//    //added this to see if I set up git
-//    
-//}
-
-
-
-
 
 
 // -----------------------------------------------------------------------

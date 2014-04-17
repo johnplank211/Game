@@ -68,7 +68,6 @@ bool _gameOver;
 
 -(void)pauseGamePlayScene;
 -(void)resumeGamePlayScene;
--(void) animation_monsterCollision:(CCNode *)monster;
 
 
 

@@ -232,9 +232,9 @@
          
         self.userInteractionEnabled = TRUE;
                  
-         [self schedule:@selector(gameLogic:) interval:1];
+         [self schedule:@selector(gameLogic:) interval:.05];
          
-         _lives = 1;
+         _lives = 2;
          _score              = 0;
          _label              = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d", _score]
                                                   fontName:@"Super Mario Bros Alphabet"
@@ -379,19 +379,19 @@
     CGPoint targetPosition = ccp(targetX,targetY);
     
  
-    CCSprite *projectile = [CCSprite spriteWithImageNamed:@"bullet.png"];
-    projectile.position = self.plane.position;
-   
-    
-    projectile.physicsBody = [CCPhysicsBody bodyWithCircleOfRadius:projectile.contentSize.width/2.0f andCenter:projectile.anchorPointInPoints];
-   
-    
-    projectile.physicsBody.collisionGroup = @"playerGroup";
-    projectile.physicsBody.collisionType  = @"projectileCollision";
+//    CCSprite *projectile = [CCSprite spriteWithImageNamed:@"bullet.png"];
+//    projectile.position = self.plane.position;
+//   
+//    
+//    projectile.physicsBody = [CCPhysicsBody bodyWithCircleOfRadius:projectile.contentSize.width/2.0f andCenter:projectile.anchorPointInPoints];
+//   
+//    
+//    projectile.physicsBody.collisionGroup = @"playerGroup";
+//    projectile.physicsBody.collisionType  = @"projectileCollision";
     
     
     //_physicsWorld.debugDraw = YES;
-    [_physicsWorld addChild:projectile];
+//    [_physicsWorld addChild:projectile];
     
        
     
@@ -401,19 +401,39 @@
     
         if (distance <= 55)
         {
+            CCSprite *projectile = [CCSprite spriteWithImageNamed:@"bullet.png"];
+            projectile.position = self.plane.position;
+            
+            [_physicsWorld addChild:projectile];
+            
+            projectile.physicsBody = [CCPhysicsBody bodyWithCircleOfRadius:projectile.contentSize.width/2.0f andCenter:projectile.anchorPointInPoints];
+            
+            
+            projectile.physicsBody.collisionGroup = @"playerGroup";
+            projectile.physicsBody.collisionType  = @"projectileCollision";
+            
+            
             //[self.plane runAction:[CCActionRotateBy actionWithDuration:2.0 angle:360]];
             [[OALSimpleAudio sharedInstance] playBg:@"gunfire.wav" loop:NO];
             
             CCActionMoveTo *actionMove   = [CCActionMoveTo actionWithDuration:1.5f position:targetPosition];
             CCActionRemove *actionRemove = [CCActionRemove action];
             [projectile runAction:[CCActionSequence actionWithArray:@[actionMove,actionRemove]]];
+            
+            
+            if (_lives <= 0) {
+                [projectile removeFromParent];
+                [projectile stopAllActions];
+                [[OALSimpleAudio sharedInstance] playBg:@"" loop:NO];
+            }
+
         }
 
-    if (_lives <= 0) {
-        [projectile removeFromParent];
-        [projectile stopAllActions];
-        [[OALSimpleAudio sharedInstance] playBg:@"" loop:NO];
-    }
+//    if (_lives <= 0) {
+//        [projectile removeFromParent];
+//        [projectile stopAllActions];
+//        [[OALSimpleAudio sharedInstance] playBg:@"" loop:NO];
+//    }
 }
 
 

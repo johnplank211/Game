@@ -7,13 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B43842B218FDA60500AEA05A /* bgii@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = B43842B118FDA60500AEA05A /* bgii@2x~iphone.png */; };
-		B46D8F8A18FDAB4D00747768 /* planeii~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = B46D8F8918FDAB4D00747768 /* planeii~iphone.png */; };
-		B46D8F8C18FDACB300747768 /* ufoIII~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = B46D8F8B18FDACB300747768 /* ufoIII~iphone.png */; };
-		B46D8F9018FDAE4500747768 /* bullet~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = B46D8F8F18FDAE4500747768 /* bullet~iphone.png */; };
-		B474C11C18F5FCAC003B1EF3 /* ufo.png in Resources */ = {isa = PBXBuildFile; fileRef = B474C11B18F5FCAC003B1EF3 /* ufo.png */; };
-		B498641E18F656BA0051C6F9 /* ufoIII~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = B498641D18F656BA0051C6F9 /* ufoIII~ipad.png */; };
-		B498642218F65AC50051C6F9 /* bullet~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = B498642118F65AC50051C6F9 /* bullet~ipad.png */; };
+		B43842B218FDA60500AEA05A /* bgii.png in Resources */ = {isa = PBXBuildFile; fileRef = B43842B118FDA60500AEA05A /* bgii.png */; };
+		B46D8F8A18FDAB4D00747768 /* planeii.png in Resources */ = {isa = PBXBuildFile; fileRef = B46D8F8918FDAB4D00747768 /* planeii.png */; };
+		B46D8F8C18FDACB300747768 /* ufoIII.png in Resources */ = {isa = PBXBuildFile; fileRef = B46D8F8B18FDACB300747768 /* ufoIII.png */; };
+		B46D8F9018FDAE4500747768 /* bullet.png in Resources */ = {isa = PBXBuildFile; fileRef = B46D8F8F18FDAE4500747768 /* bullet.png */; };
+		B46D8F9218FDB7CA00747768 /* bullet-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = B46D8F9118FDB7CA00747768 /* bullet-hd.png */; };
+		B46D8F9418FDB7F700747768 /* bullet-568h.png in Resources */ = {isa = PBXBuildFile; fileRef = B46D8F9318FDB7F700747768 /* bullet-568h.png */; };
+		B46D8F9618FDB89800747768 /* bullet-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = B46D8F9518FDB89800747768 /* bullet-ipadhd.png */; };
+		B46D8F9A18FDFE5C00747768 /* planeii-568h.png in Resources */ = {isa = PBXBuildFile; fileRef = B46D8F9918FDFE5C00747768 /* planeii-568h.png */; };
+		B46D8F9C18FDFE8F00747768 /* planeii-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = B46D8F9B18FDFE8E00747768 /* planeii-hd.png */; };
+		B46D8F9E18FDFEF100747768 /* planeii-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = B46D8F9D18FDFEF100747768 /* planeii-ipadhd.png */; };
+		B46D8FA018FDFF4700747768 /* ufoIII-568h.png in Resources */ = {isa = PBXBuildFile; fileRef = B46D8F9F18FDFF4700747768 /* ufoIII-568h.png */; };
+		B46D8FA218FDFF7000747768 /* ufoIII-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = B46D8FA118FDFF7000747768 /* ufoIII-hd.png */; };
+		B46D8FA418FDFFCD00747768 /* ufoIII-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = B46D8FA318FDFFCD00747768 /* ufoIII-ipadhd.png */; };
+		B46D8FA618FE006B00747768 /* bgii-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = B46D8FA518FE006B00747768 /* bgii-ipadhd.png */; };
+		B46D8FA818FE009E00747768 /* bgii-568h.png in Resources */ = {isa = PBXBuildFile; fileRef = B46D8FA718FE009D00747768 /* bgii-568h.png */; };
+		B46D8FAA18FE00BF00747768 /* bgi-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = B46D8FA918FE00BF00747768 /* bgi-hd.png */; };
+		B46D8FC618FF19DC00747768 /* boom-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = B46D8FC018FF19DC00747768 /* boom-hd.plist */; };
+		B46D8FC718FF19DC00747768 /* boom-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = B46D8FC118FF19DC00747768 /* boom-hd.png */; };
+		B46D8FC818FF19DC00747768 /* boom-ipadhd.plist in Resources */ = {isa = PBXBuildFile; fileRef = B46D8FC218FF19DC00747768 /* boom-ipadhd.plist */; };
+		B46D8FC918FF19DC00747768 /* boom-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = B46D8FC318FF19DC00747768 /* boom-ipadhd.png */; };
+		B46D8FCA18FF19DC00747768 /* boom.plist in Resources */ = {isa = PBXBuildFile; fileRef = B46D8FC418FF19DC00747768 /* boom.plist */; };
+		B46D8FCB18FF19DC00747768 /* boom.png in Resources */ = {isa = PBXBuildFile; fileRef = B46D8FC518FF19DC00747768 /* boom.png */; };
+		B46D8FD118FF936800747768 /* Arial-hd.fnt in Resources */ = {isa = PBXBuildFile; fileRef = B46D8FCD18FF936800747768 /* Arial-hd.fnt */; };
+		B46D8FD218FF936800747768 /* Arial-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = B46D8FCE18FF936800747768 /* Arial-hd.png */; };
+		B46D8FD318FF936800747768 /* Arial.fnt in Resources */ = {isa = PBXBuildFile; fileRef = B46D8FCF18FF936800747768 /* Arial.fnt */; };
+		B46D8FD418FF936800747768 /* Arial.png in Resources */ = {isa = PBXBuildFile; fileRef = B46D8FD018FF936800747768 /* Arial.png */; };
+		B498641E18F656BA0051C6F9 /* ufoIII-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = B498641D18F656BA0051C6F9 /* ufoIII-ipad.png */; };
+		B498642218F65AC50051C6F9 /* bullet-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = B498642118F65AC50051C6F9 /* bullet-ipad.png */; };
 		B498642418F6DA3C0051C6F9 /* boom.wav in Resources */ = {isa = PBXBuildFile; fileRef = B498642318F6DA3C0051C6F9 /* boom.wav */; };
 		B498642618F6DA560051C6F9 /* gunfire.wav in Resources */ = {isa = PBXBuildFile; fileRef = B498642518F6DA560051C6F9 /* gunfire.wav */; };
 		B4D474FF18EE17B4008E2BE8 /* laser.wav in Resources */ = {isa = PBXBuildFile; fileRef = B4D474FE18EE17B4008E2BE8 /* laser.wav */; };
@@ -222,11 +243,10 @@
 		B4E070A718EC6129004FA9EB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B4E070A618EC6129004FA9EB /* AppDelegate.m */; };
 		B4E070AA18EC6129004FA9EB /* HelloWorldScene.m in Sources */ = {isa = PBXBuildFile; fileRef = B4E070A918EC6129004FA9EB /* HelloWorldScene.m */; };
 		B4E070AD18EC6129004FA9EB /* IntroScene.m in Sources */ = {isa = PBXBuildFile; fileRef = B4E070AC18EC6129004FA9EB /* IntroScene.m */; };
-		B4E070BF18EDBC87004FA9EB /* bgii~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = B4E070BE18EDBC87004FA9EB /* bgii~ipad.png */; };
-		B4E070C518EDC4BC004FA9EB /* planeii.png in Resources */ = {isa = PBXBuildFile; fileRef = B4E070C418EDC4BC004FA9EB /* planeii.png */; };
+		B4E070BF18EDBC87004FA9EB /* bgii-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = B4E070BE18EDBC87004FA9EB /* bgii-ipad.png */; };
+		B4E070C518EDC4BC004FA9EB /* planeii-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = B4E070C418EDC4BC004FA9EB /* planeii-ipad.png */; };
 		B4E070C918EDDC5F004FA9EB /* enemymachinegun.wav in Resources */ = {isa = PBXBuildFile; fileRef = B4E070C818EDDC5F004FA9EB /* enemymachinegun.wav */; };
 		B4E070CB18EDF26C004FA9EB /* planeSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = B4E070CA18EDF26C004FA9EB /* planeSound.wav */; };
-		B4E070CF18EDF4A5004FA9EB /* ufoSecond.png in Resources */ = {isa = PBXBuildFile; fileRef = B4E070CE18EDF4A5004FA9EB /* ufoSecond.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -240,13 +260,34 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B43842B118FDA60500AEA05A /* bgii@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bgii@2x~iphone.png"; sourceTree = "<group>"; };
-		B46D8F8918FDAB4D00747768 /* planeii~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "planeii~iphone.png"; sourceTree = "<group>"; };
-		B46D8F8B18FDACB300747768 /* ufoIII~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ufoIII~iphone.png"; sourceTree = "<group>"; };
-		B46D8F8F18FDAE4500747768 /* bullet~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bullet~iphone.png"; sourceTree = "<group>"; };
-		B474C11B18F5FCAC003B1EF3 /* ufo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ufo.png; sourceTree = "<group>"; };
-		B498641D18F656BA0051C6F9 /* ufoIII~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ufoIII~ipad.png"; sourceTree = "<group>"; };
-		B498642118F65AC50051C6F9 /* bullet~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bullet~ipad.png"; sourceTree = "<group>"; };
+		B43842B118FDA60500AEA05A /* bgii.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgii.png; sourceTree = "<group>"; };
+		B46D8F8918FDAB4D00747768 /* planeii.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = planeii.png; sourceTree = "<group>"; };
+		B46D8F8B18FDACB300747768 /* ufoIII.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ufoIII.png; sourceTree = "<group>"; };
+		B46D8F8F18FDAE4500747768 /* bullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bullet.png; sourceTree = "<group>"; };
+		B46D8F9118FDB7CA00747768 /* bullet-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bullet-hd.png"; sourceTree = "<group>"; };
+		B46D8F9318FDB7F700747768 /* bullet-568h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bullet-568h.png"; sourceTree = "<group>"; };
+		B46D8F9518FDB89800747768 /* bullet-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bullet-ipadhd.png"; sourceTree = "<group>"; };
+		B46D8F9918FDFE5C00747768 /* planeii-568h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "planeii-568h.png"; sourceTree = "<group>"; };
+		B46D8F9B18FDFE8E00747768 /* planeii-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "planeii-hd.png"; sourceTree = "<group>"; };
+		B46D8F9D18FDFEF100747768 /* planeii-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "planeii-ipadhd.png"; sourceTree = "<group>"; };
+		B46D8F9F18FDFF4700747768 /* ufoIII-568h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ufoIII-568h.png"; sourceTree = "<group>"; };
+		B46D8FA118FDFF7000747768 /* ufoIII-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ufoIII-hd.png"; sourceTree = "<group>"; };
+		B46D8FA318FDFFCD00747768 /* ufoIII-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ufoIII-ipadhd.png"; sourceTree = "<group>"; };
+		B46D8FA518FE006B00747768 /* bgii-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bgii-ipadhd.png"; sourceTree = "<group>"; };
+		B46D8FA718FE009D00747768 /* bgii-568h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bgii-568h.png"; sourceTree = "<group>"; };
+		B46D8FA918FE00BF00747768 /* bgi-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bgi-hd.png"; sourceTree = "<group>"; };
+		B46D8FC018FF19DC00747768 /* boom-hd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "boom-hd.plist"; path = "Resources/boom-hd.plist"; sourceTree = "<group>"; };
+		B46D8FC118FF19DC00747768 /* boom-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "boom-hd.png"; path = "Resources/boom-hd.png"; sourceTree = "<group>"; };
+		B46D8FC218FF19DC00747768 /* boom-ipadhd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "boom-ipadhd.plist"; path = "Resources/boom-ipadhd.plist"; sourceTree = "<group>"; };
+		B46D8FC318FF19DC00747768 /* boom-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "boom-ipadhd.png"; path = "Resources/boom-ipadhd.png"; sourceTree = "<group>"; };
+		B46D8FC418FF19DC00747768 /* boom.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = boom.plist; path = Resources/boom.plist; sourceTree = "<group>"; };
+		B46D8FC518FF19DC00747768 /* boom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = boom.png; path = Resources/boom.png; sourceTree = "<group>"; };
+		B46D8FCD18FF936800747768 /* Arial-hd.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Arial-hd.fnt"; sourceTree = "<group>"; };
+		B46D8FCE18FF936800747768 /* Arial-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Arial-hd.png"; sourceTree = "<group>"; };
+		B46D8FCF18FF936800747768 /* Arial.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Arial.fnt; sourceTree = "<group>"; };
+		B46D8FD018FF936800747768 /* Arial.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Arial.png; sourceTree = "<group>"; };
+		B498641D18F656BA0051C6F9 /* ufoIII-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ufoIII-ipad.png"; sourceTree = "<group>"; };
+		B498642118F65AC50051C6F9 /* bullet-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bullet-ipad.png"; sourceTree = "<group>"; };
 		B498642318F6DA3C0051C6F9 /* boom.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = boom.wav; sourceTree = "<group>"; };
 		B498642518F6DA560051C6F9 /* gunfire.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gunfire.wav; sourceTree = "<group>"; };
 		B4D474FE18EE17B4008E2BE8 /* laser.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = laser.wav; sourceTree = "<group>"; };
@@ -678,11 +719,10 @@
 		B4E070A918EC6129004FA9EB /* HelloWorldScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HelloWorldScene.m; path = Classes/HelloWorldScene.m; sourceTree = "<group>"; };
 		B4E070AB18EC6129004FA9EB /* IntroScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IntroScene.h; path = Classes/IntroScene.h; sourceTree = "<group>"; };
 		B4E070AC18EC6129004FA9EB /* IntroScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = IntroScene.m; path = Classes/IntroScene.m; sourceTree = "<group>"; };
-		B4E070BE18EDBC87004FA9EB /* bgii~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bgii~ipad.png"; sourceTree = "<group>"; };
-		B4E070C418EDC4BC004FA9EB /* planeii.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = planeii.png; sourceTree = "<group>"; };
+		B4E070BE18EDBC87004FA9EB /* bgii-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bgii-ipad.png"; sourceTree = "<group>"; };
+		B4E070C418EDC4BC004FA9EB /* planeii-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "planeii-ipad.png"; sourceTree = "<group>"; };
 		B4E070C818EDDC5F004FA9EB /* enemymachinegun.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = enemymachinegun.wav; sourceTree = "<group>"; };
 		B4E070CA18EDF26C004FA9EB /* planeSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = planeSound.wav; sourceTree = "<group>"; };
-		B4E070CE18EDF4A5004FA9EB /* ufoSecond.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ufoSecond.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -706,19 +746,53 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B46D8FBF18FE19BA00747768 /* animation */ = {
+			isa = PBXGroup;
+			children = (
+				B46D8FC018FF19DC00747768 /* boom-hd.plist */,
+				B46D8FC118FF19DC00747768 /* boom-hd.png */,
+				B46D8FC218FF19DC00747768 /* boom-ipadhd.plist */,
+				B46D8FC318FF19DC00747768 /* boom-ipadhd.png */,
+				B46D8FC418FF19DC00747768 /* boom.plist */,
+				B46D8FC518FF19DC00747768 /* boom.png */,
+			);
+			name = animation;
+			sourceTree = "<group>";
+		};
+		B46D8FCC18FF935500747768 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				B46D8FCD18FF936800747768 /* Arial-hd.fnt */,
+				B46D8FCE18FF936800747768 /* Arial-hd.png */,
+				B46D8FCF18FF936800747768 /* Arial.fnt */,
+				B46D8FD018FF936800747768 /* Arial.png */,
+			);
+			name = fonts;
+			sourceTree = "<group>";
+		};
 		B498642718FCB5600051C6F9 /* images */ = {
 			isa = PBXGroup;
 			children = (
-				B46D8F8918FDAB4D00747768 /* planeii~iphone.png */,
-				B474C11B18F5FCAC003B1EF3 /* ufo.png */,
-				B498642118F65AC50051C6F9 /* bullet~ipad.png */,
-				B46D8F8B18FDACB300747768 /* ufoIII~iphone.png */,
-				B4E070CE18EDF4A5004FA9EB /* ufoSecond.png */,
-				B43842B118FDA60500AEA05A /* bgii@2x~iphone.png */,
-				B46D8F8F18FDAE4500747768 /* bullet~iphone.png */,
-				B498641D18F656BA0051C6F9 /* ufoIII~ipad.png */,
-				B4E070C418EDC4BC004FA9EB /* planeii.png */,
-				B4E070BE18EDBC87004FA9EB /* bgii~ipad.png */,
+				B46D8F8F18FDAE4500747768 /* bullet.png */,
+				B46D8F9318FDB7F700747768 /* bullet-568h.png */,
+				B46D8F9118FDB7CA00747768 /* bullet-hd.png */,
+				B46D8F9518FDB89800747768 /* bullet-ipadhd.png */,
+				B498642118F65AC50051C6F9 /* bullet-ipad.png */,
+				B4E070C418EDC4BC004FA9EB /* planeii-ipad.png */,
+				B46D8F9D18FDFEF100747768 /* planeii-ipadhd.png */,
+				B46D8F9B18FDFE8E00747768 /* planeii-hd.png */,
+				B46D8F9918FDFE5C00747768 /* planeii-568h.png */,
+				B46D8F8918FDAB4D00747768 /* planeii.png */,
+				B46D8F8B18FDACB300747768 /* ufoIII.png */,
+				B46D8F9F18FDFF4700747768 /* ufoIII-568h.png */,
+				B46D8FA118FDFF7000747768 /* ufoIII-hd.png */,
+				B498641D18F656BA0051C6F9 /* ufoIII-ipad.png */,
+				B46D8FA318FDFFCD00747768 /* ufoIII-ipadhd.png */,
+				B43842B118FDA60500AEA05A /* bgii.png */,
+				B46D8FA918FE00BF00747768 /* bgi-hd.png */,
+				B46D8FA718FE009D00747768 /* bgii-568h.png */,
+				B4E070BE18EDBC87004FA9EB /* bgii-ipad.png */,
+				B46D8FA518FE006B00747768 /* bgii-ipadhd.png */,
 			);
 			name = images;
 			sourceTree = "<group>";
@@ -783,6 +857,8 @@
 		B4E06E1618EC6125004FA9EB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B46D8FCC18FF935500747768 /* fonts */,
+				B46D8FBF18FE19BA00747768 /* animation */,
 				B498642818FCB5A20051C6F9 /* Sounds */,
 				B498642718FCB5600051C6F9 /* images */,
 				B4E06E1718EC6125004FA9EB /* Default.png */,
@@ -1703,21 +1779,41 @@
 				B4E0701A18EC6128004FA9EB /* LICENSE_Kazmath.txt in Resources */,
 				B4E0703118EC6128004FA9EB /* LICENSE_CCBReader.txt in Resources */,
 				B4E0709F18EC6129004FA9EB /* LICENSE_Chipmunk.txt in Resources */,
-				B4E070BF18EDBC87004FA9EB /* bgii~ipad.png in Resources */,
-				B4E070C518EDC4BC004FA9EB /* planeii.png in Resources */,
+				B4E070BF18EDBC87004FA9EB /* bgii-ipad.png in Resources */,
+				B4E070C518EDC4BC004FA9EB /* planeii-ipad.png in Resources */,
 				B4E070C918EDDC5F004FA9EB /* enemymachinegun.wav in Resources */,
 				B4E070CB18EDF26C004FA9EB /* planeSound.wav in Resources */,
-				B4E070CF18EDF4A5004FA9EB /* ufoSecond.png in Resources */,
 				B4D474FF18EE17B4008E2BE8 /* laser.wav in Resources */,
-				B474C11C18F5FCAC003B1EF3 /* ufo.png in Resources */,
-				B498641E18F656BA0051C6F9 /* ufoIII~ipad.png in Resources */,
-				B498642218F65AC50051C6F9 /* bullet~ipad.png in Resources */,
+				B498641E18F656BA0051C6F9 /* ufoIII-ipad.png in Resources */,
+				B498642218F65AC50051C6F9 /* bullet-ipad.png in Resources */,
 				B498642418F6DA3C0051C6F9 /* boom.wav in Resources */,
 				B498642618F6DA560051C6F9 /* gunfire.wav in Resources */,
-				B43842B218FDA60500AEA05A /* bgii@2x~iphone.png in Resources */,
-				B46D8F8A18FDAB4D00747768 /* planeii~iphone.png in Resources */,
-				B46D8F8C18FDACB300747768 /* ufoIII~iphone.png in Resources */,
-				B46D8F9018FDAE4500747768 /* bullet~iphone.png in Resources */,
+				B43842B218FDA60500AEA05A /* bgii.png in Resources */,
+				B46D8F8A18FDAB4D00747768 /* planeii.png in Resources */,
+				B46D8F8C18FDACB300747768 /* ufoIII.png in Resources */,
+				B46D8F9018FDAE4500747768 /* bullet.png in Resources */,
+				B46D8F9218FDB7CA00747768 /* bullet-hd.png in Resources */,
+				B46D8F9418FDB7F700747768 /* bullet-568h.png in Resources */,
+				B46D8F9618FDB89800747768 /* bullet-ipadhd.png in Resources */,
+				B46D8F9A18FDFE5C00747768 /* planeii-568h.png in Resources */,
+				B46D8F9C18FDFE8F00747768 /* planeii-hd.png in Resources */,
+				B46D8F9E18FDFEF100747768 /* planeii-ipadhd.png in Resources */,
+				B46D8FA018FDFF4700747768 /* ufoIII-568h.png in Resources */,
+				B46D8FA218FDFF7000747768 /* ufoIII-hd.png in Resources */,
+				B46D8FA418FDFFCD00747768 /* ufoIII-ipadhd.png in Resources */,
+				B46D8FA618FE006B00747768 /* bgii-ipadhd.png in Resources */,
+				B46D8FA818FE009E00747768 /* bgii-568h.png in Resources */,
+				B46D8FAA18FE00BF00747768 /* bgi-hd.png in Resources */,
+				B46D8FC618FF19DC00747768 /* boom-hd.plist in Resources */,
+				B46D8FC718FF19DC00747768 /* boom-hd.png in Resources */,
+				B46D8FC818FF19DC00747768 /* boom-ipadhd.plist in Resources */,
+				B46D8FC918FF19DC00747768 /* boom-ipadhd.png in Resources */,
+				B46D8FCA18FF19DC00747768 /* boom.plist in Resources */,
+				B46D8FCB18FF19DC00747768 /* boom.png in Resources */,
+				B46D8FD118FF936800747768 /* Arial-hd.fnt in Resources */,
+				B46D8FD218FF936800747768 /* Arial-hd.png in Resources */,
+				B46D8FD318FF936800747768 /* Arial.fnt in Resources */,
+				B46D8FD418FF936800747768 /* Arial.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

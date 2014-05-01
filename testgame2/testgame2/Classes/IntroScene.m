@@ -10,6 +10,8 @@
 // Import the interfaces
 #import "IntroScene.h"
 #import "HelloWorldScene.h"
+#import "CreditScene.h"
+#import "Instructions.h"
 
 // -----------------------------------------------------------------------
 #pragma mark - IntroScene
@@ -51,7 +53,21 @@
     helloWorldButton.position = ccp(0.5f, 0.35f);
     [helloWorldButton setTarget:self selector:@selector(onSpinningClicked:)];
     [self addChild:helloWorldButton];
+    
+    // Credits scene button
+    CCButton *creditButton = [CCButton buttonWithTitle:@"[ Credits ]" fontName:@"Verdana-Bold" fontSize:18.0f];
+    creditButton.positionType = CCPositionTypeNormalized;
+    creditButton.position = ccp(0.5f, 0.30f);
+    [creditButton setTarget:self selector:@selector(onCreditClicked:)];
+    [self addChild:creditButton];
 
+    // instructions scene button
+    CCButton *instructionButton = [CCButton buttonWithTitle:@"[ Instructions ]" fontName:@"Verdana-Bold" fontSize:18.0f];
+    instructionButton.positionType = CCPositionTypeNormalized;
+    instructionButton.position = ccp(0.5f, 0.25f);
+    [instructionButton setTarget:self selector:@selector(onInstructionsClicked:)];
+    [self addChild:instructionButton];
+    
     // done
 	return self;
 }
@@ -60,10 +76,30 @@
 #pragma mark - Button Callbacks
 // -----------------------------------------------------------------------
 
+
+//Starts game
 - (void)onSpinningClicked:(id)sender
 {
     // start spinning scene with transition
     [[CCDirector sharedDirector] replaceScene:[HelloWorldScene scene]
+                               withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionLeft duration:1.0f]];
+}
+
+
+//Starts credit scene
+- (void)onCreditClicked:(id)sender
+{
+    // start spinning scene with transition
+    [[CCDirector sharedDirector] replaceScene:[CreditScene scene]
+                               withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionLeft duration:1.0f]];
+}
+
+
+//Starts Instructions scene
+- (void)onInstructionsClicked:(id)sender
+{
+    // start spinning scene with transition
+    [[CCDirector sharedDirector] replaceScene:[Instructions scene]
                                withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionLeft duration:1.0f]];
 }
 

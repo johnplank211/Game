@@ -32,6 +32,7 @@
 #pragma mark - Create & Destroy
 // -----------------------------------------------------------------------
 
+//Sets up background
 + (CCScene *)scene
 {
     
@@ -72,7 +73,7 @@
 
 
 // -----------------------------------------------------------------------
-
+//This is what detects collisions betweeen ufo and bullets
 - (BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)triple monsterCollision:(CCNode *)monster projectileCollision:(CCNode *)projectile 
 {
     [monster removeFromParent];
@@ -91,7 +92,7 @@
     CCSpriteBatchNode *spriteSheet = [CCSpriteBatchNode batchNodeWithFile:@"boom.png"];
     [self addChild:spriteSheet];
     
-    
+    //this goes through array of images for animation
     NSMutableArray *walkAnimFrames = [NSMutableArray array];
     for (int i=1; i<=3; i++) {
         [walkAnimFrames addObject:
@@ -110,6 +111,8 @@
     
     [spriteSheet addChild:self.ufo2];
     
+    
+    //Adds kill score everytime ufo is hit
     _score++;
     [_label setString:[NSString stringWithFormat:@"score: %d",_score]];
     
@@ -117,7 +120,7 @@
 }
 
 
-
+// detects collisions between ufo and plane
 - (BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)triple monsterCollision:(CCNode *)ufoo planeCollision:(CCNode *)planeHero
 {
     [ufoo removeFromParent];
@@ -125,7 +128,7 @@
     
    // _lives = 1;
     
-    
+    //checks to see if there is lives left, if not fire game over
     if (_lives <= 0) {
         [planeHero removeFromParent];
         [planeHero stopAllActions];
@@ -142,21 +145,11 @@
             
     
         }
-    
-//    if (_lives <= 0) {
-//        [planeHero removeFromParent];
-//        [planeHero stopAllActions];
-//        planeHero.visible = FALSE;
-//        [self endScene:kEndReasonLose];
-//    }
-
-
-    
     return YES;
 }
 
 
-
+// Adds ufos to the scene 
 - (void) addMonster {
     
     self.ufo2 = [CCSprite spriteWithImageNamed:@"ufoIII.png"];
@@ -195,8 +188,7 @@
 
 
 
-
-
+// Adds our hero plane to the scene and the physics world
 - (id)init
 {
     
@@ -234,6 +226,8 @@
                  
          [self schedule:@selector(gameLogic:) interval:1];
          
+         
+         //Sets up live and score for the game to start with
          _lives = 2;
          _score              = 0;
          _label              = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d", _score]
@@ -245,7 +239,7 @@
          
          [self addChild:_label];
          
-         
+         //pause button
          CCButton *pause = [CCButton buttonWithTitle:@"pause"];
          [pause setTarget:self selector:@selector(pauseGamePlayScene)];
          pause.positionType = CCPositionTypeNormalized;
@@ -254,6 +248,7 @@
          
          [self addChild:pause z:100];
          
+         //resume button
          CCButton *resume = [CCButton buttonWithTitle:@"resume"];
          [resume setTarget:self selector:@selector(resumeGamePlayScene)];
          resume.positionType = CCPositionTypeNormalized;
@@ -315,11 +310,13 @@
 //}
 
 
-
+//restart game method
 - (void)restartTapped:(id)sender {
     [[CCDirector sharedDirector] replaceScene:[HelloWorldScene scene]];
 }
 
+
+//is called when game is over
 - (void)endScene:(EndReason)endReason {
     
     if (_gameOver) return;
@@ -369,7 +366,7 @@
 }
 
 
-
+//checks for touches on the plane and fire projectiles
 -(void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
     
     CGPoint touchLocation = [touch locationInNode:self];
@@ -413,11 +410,6 @@
 
         }
 
-//    if (_lives <= 0) {
-//        [projectile removeFromParent];
-//        [projectile stopAllActions];
-//        [[OALSimpleAudio sharedInstance] playBg:@"" loop:NO];
-//    }
 }
 
 

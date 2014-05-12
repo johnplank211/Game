@@ -198,8 +198,7 @@
     
      if ((self=[super init])) {
 
-         //label = [CCLabelTTF labelWithString:@"X" fontName:@"Arial" fontSize:48];
-         //[self addChild:label];
+         
          _motionManager = [[CMMotionManager alloc] init];
       
          

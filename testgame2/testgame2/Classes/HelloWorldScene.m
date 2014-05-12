@@ -11,6 +11,7 @@
 #import "IntroScene.h"
 #import "chipmunk.h"
 #import "CCAnimation.h"
+#import <CoreMotion/CoreMotion.h>
 
 
 
@@ -22,6 +23,9 @@
 {
     CCSprite *_sprite;
     CCPhysicsNode *_physicsWorld;
+    CMMotionManager *_motionManager;
+    CCLabelTTF *label;
+
 }
 
 
@@ -194,16 +198,18 @@
     
      if ((self=[super init])) {
 
-         
+         //label = [CCLabelTTF labelWithString:@"X" fontName:@"Arial" fontSize:48];
+         //[self addChild:label];
+         _motionManager = [[CMMotionManager alloc] init];
       
          
-      CGSize winSize = [CCDirector sharedDirector].viewSize;
+      //CGSize winSize = [CCDirector sharedDirector].viewSize;
         
          
          
          
         self.plane = [CCSprite spriteWithImageNamed:@"planeii.png"];
-        plane.position = ccp(plane.contentSize.width/2, winSize.height/2);
+       // plane.position = ccp(plane.contentSize.width/2, winSize.height/2);
          
 
          _physicsWorld = [CCPhysicsNode node];
@@ -267,6 +273,18 @@
     
 }
 
+//- (void)onEnter
+//{
+//    [super onEnter];
+//    label.position = ccp(self.contentSize.width/2, self.contentSize.height/2);
+//    [_motionManager startAccelerometerUpdates];
+//}
+//
+//- (void)onExit
+//{
+//    [super onExit];
+//    [_motionManager stopAccelerometerUpdates];
+//}
 
 -(void)pauseGamePlayScene
 {
@@ -279,7 +297,13 @@
 }
 
 
-
+- (void)update:(CCTime)delta {
+    CMAccelerometerData *accelerometerData = _motionManager.accelerometerData;
+    CMAcceleration acceleration = accelerometerData.acceleration;
+    CGFloat newXPosition = plane.position.x + acceleration.y * 1000 * delta;
+    newXPosition = clampf(newXPosition, 0, self.contentSize.width);
+    plane.position = CGPointMake(newXPosition, plane.position.y);
+}
 
 
 //- (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration {
@@ -417,24 +441,42 @@
 #pragma mark - Enter & Exit
 // -----------------------------------------------------------------------
 
+
+
+
 - (void)onEnter
 {
-    // always call super onEnter first
     [super onEnter];
-    
-    // In pre-v3, touch enable and scheduleUpdate was called here
-    // In v3, touch is enabled by setting userInterActionEnabled for the individual nodes
-    // Per frame update is automatically enabled, if update is overridden
-    
+    label.position = ccp(self.contentSize.width/2, self.contentSize.height/2);
+    [_motionManager startAccelerometerUpdates];
 }
-
-// -----------------------------------------------------------------------
 
 - (void)onExit
 {
-    // always call super onExit last
     [super onExit];
+    [_motionManager stopAccelerometerUpdates];
 }
+
+
+
+//- (void)onEnter
+//{
+//    // always call super onEnter first
+//    [super onEnter];
+//    
+//    // In pre-v3, touch enable and scheduleUpdate was called here
+//    // In v3, touch is enabled by setting userInterActionEnabled for the individual nodes
+//    // Per frame update is automatically enabled, if update is overridden
+//    
+//}
+
+// -----------------------------------------------------------------------
+
+//- (void)onExit
+//{
+//    // always call super onExit last
+//    [super onExit];
+//}
 
 // -----------------------------------------------------------------------
 #pragma mark - Touch Handler

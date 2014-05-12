@@ -253,6 +253,7 @@
 		B4E070C518EDC4BC004FA9EB /* planeii-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = B4E070C418EDC4BC004FA9EB /* planeii-ipad.png */; };
 		B4E070C918EDDC5F004FA9EB /* enemymachinegun.wav in Resources */ = {isa = PBXBuildFile; fileRef = B4E070C818EDDC5F004FA9EB /* enemymachinegun.wav */; };
 		B4E070CB18EDF26C004FA9EB /* planeSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = B4E070CA18EDF26C004FA9EB /* planeSound.wav */; };
+		B4FC3C9619213A7C003FA264 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4FC3C9519213A7C003FA264 /* CoreMotion.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -739,6 +740,7 @@
 		B4E070C418EDC4BC004FA9EB /* planeii-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "planeii-ipad.png"; sourceTree = "<group>"; };
 		B4E070C818EDDC5F004FA9EB /* enemymachinegun.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = enemymachinegun.wav; sourceTree = "<group>"; };
 		B4E070CA18EDF26C004FA9EB /* planeSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = planeSound.wav; sourceTree = "<group>"; };
+		B4FC3C9519213A7C003FA264 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -746,6 +748,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4FC3C9619213A7C003FA264 /* CoreMotion.framework in Frameworks */,
 				B4E06DFE18EC6125004FA9EB /* QuartzCore.framework in Frameworks */,
 				B4E06E0018EC6125004FA9EB /* OpenGLES.framework in Frameworks */,
 				B4E06E0218EC6125004FA9EB /* OpenAL.framework in Frameworks */,
@@ -841,6 +844,7 @@
 		B4E06DF118EC6125004FA9EB = {
 			isa = PBXGroup;
 			children = (
+				B4FC3C9519213A7C003FA264 /* CoreMotion.framework */,
 				B497145D1912EAAD007135CF /* icon2234.png */,
 				B49714591912EA44007135CF /* icon234.png */,
 				B49714511912E721007135CF /* icon3.png */,
@@ -2094,7 +2098,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				EXECUTABLE_EXTENSION = a;
 				EXECUTABLE_PREFIX = lib;
@@ -2111,7 +2115,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				EXECUTABLE_EXTENSION = a;
 				EXECUTABLE_PREFIX = lib;
@@ -2128,7 +2132,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2155,7 +2159,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "testgame2/Supporting Files/Prefix.pch";

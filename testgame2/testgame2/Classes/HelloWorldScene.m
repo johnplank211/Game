@@ -24,8 +24,7 @@
     CCSprite *_sprite;
     CCPhysicsNode *_physicsWorld;
     CMMotionManager *_motionManager;
-    CCLabelTTF *label;
-
+    
 }
 
 
@@ -80,16 +79,16 @@
 //This is what detects collisions betweeen ufo and bullets
 - (BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)triple monsterCollision:(CCNode *)monster projectileCollision:(CCNode *)projectile 
 {
-    [monster removeFromParent];
-    [projectile removeFromParent];
+    [monster removeFromParentAndCleanup:YES];
+    [projectile removeFromParentAndCleanup:YES];
     
     [[OALSimpleAudio sharedInstance] playEffect:@"boom.wav"];
 
-    if (_score >= 0)
-    {
-        
-        [self endScene:kEndReasonWin];
-    }
+//    if (_score >= 0)
+//    {
+//        
+//        [self endScene:kEndReasonWin];
+//    }
     
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"boom.plist"];
     
@@ -152,8 +151,29 @@
     return YES;
 }
 
+- (BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)triple smartBombCollision:(CCNode *)smartBomb projectileCollision:(CCNode *)projectile
+{
+    [smartBomb removeFromParent];
+    [[OALSimpleAudio sharedInstance] playEffect:@"boom.wav"];
+    
+    [smartBomb removeFromParent];
+    [projectile removeFromParent];
+    
+    
+    [self destroyAllMonster];
+    
+    
+    return YES;
+}
 
-// Adds ufos to the scene 
+-(void)destroyAllMonster
+{
+    
+    [ufo2 removeFromParentAndCleanup:YES];
+    
+}
+
+// Adds ufos to the scene
 - (void) addMonster {
     
     self.ufo2 = [CCSprite spriteWithImageNamed:@"ufoIII.png"];
@@ -188,7 +208,44 @@
     
     
 }
-
+//Bonus smart bomb
+- (void) addBonus {
+    
+    self.ufo2 = [CCSprite spriteWithImageNamed:@"bomb.png"];
+    
+    int minY = self.ufo2.contentSize.width / 2;
+    int maxY = self.contentSize.height - self.ufo2.contentSize.height / 2;
+    int rangeY = maxY - minY;
+    int randomY = (arc4random() % rangeY) + minY;
+    
+    self.ufo2.position = CGPointMake(randomY, self.contentSize.width + self.ufo2.contentSize.width/2);
+    //[self addChild:self.ufo2];
+    
+    int minDuration = 1.0;
+    int maxDuration = 4.0;
+    int rangeDuration = maxDuration - minDuration;
+    int randomDuration = (arc4random() % rangeDuration) + minDuration;
+    
+    
+    
+    
+    self.ufo2.physicsBody = [CCPhysicsBody bodyWithRect:(CGRect){CGPointZero, self.ufo2.contentSize} cornerRadius:1];
+    self.ufo2.physicsBody.collisionGroup = @"monsterGroup";
+    self.ufo2.physicsBody.collisionType  = @"smartBombCollision";
+    [_physicsWorld addChild:self.ufo2];
+    
+    
+    
+    CCAction *actionMove = [CCActionMoveTo actionWithDuration:randomDuration position:CGPointMake(randomY, -self.ufo2.contentSize.width/2)];
+    CCAction *actionRemove = [CCActionRemove action];
+    [self.ufo2 runAction:[CCActionSequence actionWithArray:@[actionMove,actionRemove]]];
+    
+    
+    
+    
+    
+    
+}
 
 
 
@@ -229,11 +286,20 @@
          
         self.userInteractionEnabled = TRUE;
                  
-         [self schedule:@selector(gameLogic:) interval:1];
+         //[self schedule:@selector(gameLogic:) interval:1];
+         
+         [self schedule:@selector(gameLogic:) interval:2 repeat:30 delay:5];
+         [self schedule:@selector(gameLogic2:) interval:1.5 repeat:45 delay:35];
+         [self schedule:@selector(gameLogic3:) interval:1 repeat:60 delay:65];
+         [self schedule:@selector(gameLogic4:) interval:.03 repeat:3150 delay:95];
+         
+         
+         
+         [self schedule:@selector(bonusLogic:) interval:1];
          
          
          //Sets up live and score for the game to start with
-         _lives = 2;
+         _lives = 0;
          _score              = 0;
          _label              = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d", _score]
                                                   fontName:@"Super Mario Bros Alphabet"
@@ -272,19 +338,6 @@
     
 }
 
-//- (void)onEnter
-//{
-//    [super onEnter];
-//    label.position = ccp(self.contentSize.width/2, self.contentSize.height/2);
-//    [_motionManager startAccelerometerUpdates];
-//}
-//
-//- (void)onExit
-//{
-//    [super onExit];
-//    [_motionManager stopAccelerometerUpdates];
-//}
-
 -(void)pauseGamePlayScene
 {
      [[CCDirector sharedDirector] pause];
@@ -300,37 +353,10 @@
     CMAccelerometerData *accelerometerData = _motionManager.accelerometerData;
     CMAcceleration acceleration = accelerometerData.acceleration;
     CGFloat newXPosition = plane.position.x + acceleration.y * 1000 * delta;
+    
     newXPosition = clampf(newXPosition, 0, self.contentSize.width);
-    plane.position = CGPointMake(newXPosition, plane.position.y);
+    plane.position = CGPointMake(newXPosition, plane.position.x);
 }
-
-
-//- (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration {
-//    
-//#define kFilteringFactor 0.1
-//#define kRestAccelX -0.6
-//#define kShipMaxPointsPerSec (winSize.height*0.5)
-//#define kMaxDiffX 0.2
-//    
-//    UIAccelerationValue rollingX, rollingY, rollingZ;
-//    
-//    rollingX = (acceleration.x * kFilteringFactor) + (rollingX * (1.0 - kFilteringFactor));
-//    rollingY = (acceleration.y * kFilteringFactor) + (rollingY * (1.0 - kFilteringFactor));
-//    rollingZ = (acceleration.z * kFilteringFactor) + (rollingZ * (1.0 - kFilteringFactor));
-//    
-//    float accelX = acceleration.x - rollingX;
-//    float accelY = acceleration.y - rollingY;
-//    float accelZ = acceleration.z - rollingZ;
-//    
-//    CGSize winSize = [CCDirector sharedDirector].viewSize;
-//    
-//    float accelDiff = accelX - kRestAccelX;
-//    float accelFraction = accelDiff / kMaxDiffX;
-//    float pointsPerSec = kShipMaxPointsPerSec * accelFraction;
-//    
-//    _shipPointsPerSecY = pointsPerSec;
-//    
-//}
 
 
 //restart game method
@@ -383,28 +409,45 @@
 
 -(void)gameLogic:(CCTime)dt
 {
-    
     [self addMonster];
-     
 }
 
+-(void)gameLogic2:(CCTime)dt
+{    
+    [self addMonster];    
+}
+
+-(void)gameLogic3:(CCTime)dt
+{
+    [self addMonster];
+}
+
+-(void)gameLogic4:(CCTime)dt
+{
+    [self addMonster];
+}
+
+-(void)bonusLogic:(CCTime)dt
+{
+    [self addBonus];
+}
 
 //checks for touches on the plane and fire projectiles
 -(void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
     
-    CGPoint touchLocation = [touch locationInNode:self];
+    //CGPoint touchLocation = [touch locationInNode:self];
  
     int     targetX   = 1000 + 0;
     int     targetY   = 0 + self.plane.position.y;
     CGPoint targetPosition = ccp(targetX,targetY);
     
  
-    float distance = powf(self.plane.position.x - touchLocation.x, 2) + powf(self.plane.position.y - touchLocation.y, 2);
+    //float distance = powf(self.plane.position.x - touchLocation.x, 2) + powf(self.plane.position.y - touchLocation.y, 2);
     
-        distance = sqrtf(distance);
-    
-        if (distance <= 55)
-        {
+//        distance = sqrtf(distance);
+//    
+//        if (distance <= 55)
+//        {
             CCSprite *projectile = [CCSprite spriteWithImageNamed:@"bullet.png"];
             projectile.position = self.plane.position;
             
@@ -425,13 +468,13 @@
             [projectile runAction:[CCActionSequence actionWithArray:@[actionMove,actionRemove]]];
             
             
-            if (_lives <= 0) {
+            if (_lives <= -1) {
                 [projectile removeFromParent];
                 [projectile stopAllActions];
                 [[OALSimpleAudio sharedInstance] playBg:@"" loop:NO];
             }
 
-        }
+        //}
 
 }
 
@@ -446,7 +489,7 @@
 - (void)onEnter
 {
     [super onEnter];
-    label.position = ccp(self.contentSize.width/2, self.contentSize.height/2);
+    plane.position = ccp(self.contentSize.width/2, self.contentSize.height/2);
     [_motionManager startAccelerometerUpdates];
 }
 
@@ -458,43 +501,6 @@
 
 
 
-//- (void)onEnter
-//{
-//    // always call super onEnter first
-//    [super onEnter];
-//    
-//    // In pre-v3, touch enable and scheduleUpdate was called here
-//    // In v3, touch is enabled by setting userInterActionEnabled for the individual nodes
-//    // Per frame update is automatically enabled, if update is overridden
-//    
-//}
-
-// -----------------------------------------------------------------------
-
-//- (void)onExit
-//{
-//    // always call super onExit last
-//    [super onExit];
-//}
-
-// -----------------------------------------------------------------------
-#pragma mark - Touch Handler
-// -----------------------------------------------------------------------
-
-//-(void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
-//    CGPoint touchLoc = [touch locationInNode:self];
-//    
-//    // Log touch location
-//    CCLOG(@"Move sprite to @ %@",NSStringFromCGPoint(touchLoc));
-//    
-//    // Move our sprite to touch location
-//    CCActionMoveTo *actionMove = [CCActionMoveTo actionWithDuration:1.0f position:touchLoc];
-//    [_sprite runAction:actionMove];
-//    
-//    
-//    
-//    
-//}
 
 
 

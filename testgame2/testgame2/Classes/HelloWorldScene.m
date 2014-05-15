@@ -295,7 +295,7 @@
          
          
          
-         [self schedule:@selector(bonusLogic:) interval:1];
+         [self schedule:@selector(bonusLogic:) interval:8];
          
          
          //Sets up live and score for the game to start with

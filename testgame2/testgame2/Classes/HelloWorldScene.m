@@ -144,8 +144,6 @@
             ufoo.visible = NO;
             [planeHero runAction:[CCActionBlink actionWithDuration:1.0 blinks:9]];
             _lives--;
-            
-            
     
         }
     return YES;
@@ -190,23 +188,17 @@
     int maxDuration = 4.0;
     int rangeDuration = maxDuration - minDuration;
     int randomDuration = (arc4random() % rangeDuration) + minDuration;
-    
-    
-    
-    
+            
     self.ufo2.physicsBody = [CCPhysicsBody bodyWithRect:(CGRect){CGPointZero, self.ufo2.contentSize} cornerRadius:1];
     self.ufo2.physicsBody.collisionGroup = @"monsterGroup";
     self.ufo2.physicsBody.collisionType  = @"monsterCollision";
     [_physicsWorld addChild:self.ufo2];
 
-
     
     CCAction *actionMove = [CCActionMoveTo actionWithDuration:randomDuration position:CGPointMake(-self.ufo2.contentSize.width/2, randomY)];
     CCAction *actionRemove = [CCActionRemove action];
     [self.ufo2 runAction:[CCActionSequence actionWithArray:@[actionMove,actionRemove]]];
-    
-    
-    
+
 }
 //Bonus smart bomb
 - (void) addBonus {
@@ -239,11 +231,6 @@
     CCAction *actionMove = [CCActionMoveTo actionWithDuration:randomDuration position:CGPointMake(randomY, -self.ufo2.contentSize.width/2)];
     CCAction *actionRemove = [CCActionRemove action];
     [self.ufo2 runAction:[CCActionSequence actionWithArray:@[actionMove,actionRemove]]];
-    
-    
-    
-    
-    
     
 }
 

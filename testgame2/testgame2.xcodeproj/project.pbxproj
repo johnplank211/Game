@@ -16,11 +16,13 @@
 		B40FBE18191188AE007551FC /* logo2.png in Resources */ = {isa = PBXBuildFile; fileRef = B40FBE17191188AE007551FC /* logo2.png */; };
 		B40FBE1A191188B2007551FC /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = B40FBE19191188B2007551FC /* Default-Landscape~ipad.png */; };
 		B40FBE1C191188BA007551FC /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = B40FBE1B191188BA007551FC /* Default-Landscape@2x~ipad.png */; };
+		B413EDA0192D253F00E08CD0 /* GameCenterFiles.m in Sources */ = {isa = PBXBuildFile; fileRef = B413ED9F192D253F00E08CD0 /* GameCenterFiles.m */; };
 		B41512F21923F83600ADD202 /* bomb-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = B41512F11923F83500ADD202 /* bomb-ipadhd.png */; };
 		B41512F41923F83A00ADD202 /* bomb.png in Resources */ = {isa = PBXBuildFile; fileRef = B41512F31923F83A00ADD202 /* bomb.png */; };
 		B41512F61923F85D00ADD202 /* bomb-568h.png in Resources */ = {isa = PBXBuildFile; fileRef = B41512F51923F85D00ADD202 /* bomb-568h.png */; };
 		B41512F81923F87200ADD202 /* bomb-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = B41512F71923F87200ADD202 /* bomb-hd.png */; };
 		B41512FA1923F88500ADD202 /* bomb-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = B41512F91923F88500ADD202 /* bomb-ipad.png */; };
+		B41512FC192A8DD500ADD202 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B41512FB192A8DD500ADD202 /* GameKit.framework */; };
 		B43842B218FDA60500AEA05A /* bgii.png in Resources */ = {isa = PBXBuildFile; fileRef = B43842B118FDA60500AEA05A /* bgii.png */; };
 		B46D8F8A18FDAB4D00747768 /* planeii.png in Resources */ = {isa = PBXBuildFile; fileRef = B46D8F8918FDAB4D00747768 /* planeii.png */; };
 		B46D8F8C18FDACB300747768 /* ufoIII.png in Resources */ = {isa = PBXBuildFile; fileRef = B46D8F8B18FDACB300747768 /* ufoIII.png */; };
@@ -284,11 +286,14 @@
 		B40FBE17191188AE007551FC /* logo2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo2.png; sourceTree = "<group>"; };
 		B40FBE19191188B2007551FC /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		B40FBE1B191188BA007551FC /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
+		B413ED9E192D253F00E08CD0 /* GameCenterFiles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameCenterFiles.h; sourceTree = "<group>"; };
+		B413ED9F192D253F00E08CD0 /* GameCenterFiles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameCenterFiles.m; sourceTree = "<group>"; };
 		B41512F11923F83500ADD202 /* bomb-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bomb-ipadhd.png"; sourceTree = "<group>"; };
 		B41512F31923F83A00ADD202 /* bomb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bomb.png; sourceTree = "<group>"; };
 		B41512F51923F85D00ADD202 /* bomb-568h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bomb-568h.png"; sourceTree = "<group>"; };
 		B41512F71923F87200ADD202 /* bomb-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bomb-hd.png"; sourceTree = "<group>"; };
 		B41512F91923F88500ADD202 /* bomb-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bomb-ipad.png"; sourceTree = "<group>"; };
+		B41512FB192A8DD500ADD202 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		B43842B118FDA60500AEA05A /* bgii.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgii.png; sourceTree = "<group>"; };
 		B46D8F8918FDAB4D00747768 /* planeii.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = planeii.png; sourceTree = "<group>"; };
 		B46D8F8B18FDACB300747768 /* ufoIII.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ufoIII.png; sourceTree = "<group>"; };
@@ -751,6 +756,7 @@
 		B4E070C818EDDC5F004FA9EB /* enemymachinegun.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = enemymachinegun.wav; sourceTree = "<group>"; };
 		B4E070CA18EDF26C004FA9EB /* planeSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = planeSound.wav; sourceTree = "<group>"; };
 		B4FC3C9519213A7C003FA264 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		B4FDEE4C192D1673009CEB51 /* AppSpecificValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppSpecificValues.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -758,6 +764,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B41512FC192A8DD500ADD202 /* GameKit.framework in Frameworks */,
 				B4FC3C9619213A7C003FA264 /* CoreMotion.framework in Frameworks */,
 				B4E06DFE18EC6125004FA9EB /* QuartzCore.framework in Frameworks */,
 				B4E06E0018EC6125004FA9EB /* OpenGLES.framework in Frameworks */,
@@ -859,7 +866,6 @@
 		B4E06DF118EC6125004FA9EB = {
 			isa = PBXGroup;
 			children = (
-				B4FC3C9519213A7C003FA264 /* CoreMotion.framework */,
 				B497145D1912EAAD007135CF /* icon2234.png */,
 				B49714591912EA44007135CF /* icon234.png */,
 				B49714511912E721007135CF /* icon3.png */,
@@ -888,6 +894,8 @@
 		B4E06DFC18EC6125004FA9EB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B41512FB192A8DD500ADD202 /* GameKit.framework */,
+				B4FC3C9519213A7C003FA264 /* CoreMotion.framework */,
 				B4E06DFD18EC6125004FA9EB /* QuartzCore.framework */,
 				B4E06DFF18EC6125004FA9EB /* OpenGLES.framework */,
 				B4E06E0118EC6125004FA9EB /* OpenAL.framework */,
@@ -937,6 +945,7 @@
 		B4E06E3F18EC6126004FA9EB /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				B4FDEE4C192D1673009CEB51 /* AppSpecificValues.h */,
 				B4E06F7218EC6127004FA9EB /* LICENSE_cocos2d.txt */,
 				B4E0701918EC6128004FA9EB /* LICENSE_Kazmath.txt */,
 				B4E0703018EC6128004FA9EB /* LICENSE_CCBReader.txt */,
@@ -1728,6 +1737,8 @@
 				B40FBDE919102F1B007551FC /* CreditScene.m */,
 				B49714651912ED49007135CF /* Instructions.h */,
 				B49714661912ED49007135CF /* Instructions.m */,
+				B413ED9E192D253F00E08CD0 /* GameCenterFiles.h */,
+				B413ED9F192D253F00E08CD0 /* GameCenterFiles.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -2018,6 +2029,7 @@
 				B4E070AD18EC6129004FA9EB /* IntroScene.m in Sources */,
 				B40FBDEA19102F1B007551FC /* CreditScene.m in Sources */,
 				B49714671912ED49007135CF /* Instructions.m in Sources */,
+				B413EDA0192D253F00E08CD0 /* GameCenterFiles.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,6 +12,10 @@
 #import "HelloWorldScene.h"
 #import "CreditScene.h"
 #import "Instructions.h"
+#import "GameCenterFiles.h"
+
+
+
 
 // -----------------------------------------------------------------------
 #pragma mark - IntroScene
@@ -22,6 +26,9 @@
 // -----------------------------------------------------------------------
 #pragma mark - Create & Destroy
 // -----------------------------------------------------------------------
+
+
+
 
 + (IntroScene *)scene
 {
@@ -35,6 +42,9 @@
     // Apple recommend assigning self with supers return value
     self = [super init];
     if (!self) return(nil);
+
+    [[GameCenterFiles sharedInstance] authenticateLocalUser];
+     
     
     // Create a colored background (Dark Grey)
     CCNodeColor *background = [CCNodeColor nodeWithColor:[CCColor colorWithRed:0.2f green:0.2f blue:0.2f alpha:1.0f]];
@@ -71,6 +81,17 @@
     // done
 	return self;
 }
+
+
+
+
+
+
+
+
+
+
+
 
 // -----------------------------------------------------------------------
 #pragma mark - Button Callbacks

@@ -55,9 +55,11 @@ bool _gameOver;
 @property (nonatomic, retain) CCSprite *plane;
 @property (nonatomic, retain) CCSprite *ufo1;
 @property (nonatomic, retain) CCSprite *ufo2;
+@property (nonatomic, retain) NSString* currentLeaderBoard;
 
 @property (nonatomic, strong) CCAction *walkAction;
 @property (nonatomic, strong) CCAction *moveAction;
+@property (nonatomic, assign) int64_t _score;
 
 
 

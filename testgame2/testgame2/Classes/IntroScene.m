@@ -78,6 +78,14 @@
     [instructionButton setTarget:self selector:@selector(onInstructionsClicked:)];
     [self addChild:instructionButton];
     
+    // instructions scene button
+    CCButton *LocalLeaderBoardButton = [CCButton buttonWithTitle:@"[ Local LeaderBoard ]" fontName:@"Verdana-Bold" fontSize:18.0f];
+    LocalLeaderBoardButton.positionType = CCPositionTypeNormalized;
+    LocalLeaderBoardButton.position = ccp(0.5f, 0.20f);
+    [LocalLeaderBoardButton setTarget:self selector:@selector(onInstructionsClicked:)];
+    [self addChild:LocalLeaderBoardButton];
+
+    
     // done
 	return self;
 }

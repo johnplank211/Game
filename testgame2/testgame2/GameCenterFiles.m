@@ -101,51 +101,31 @@ static GameCenterFiles *sharedHelper = nil;
     
 }
 
-- (void) reportScore: (int64_t) score forCategory: (NSString*) category
+- (void) reportScore: (int64_t) score forLeaderboardID: (NSString*) category
 {
-	GKScore *scoreReporter = [[GKScore alloc] initWithCategory:category] ;
-	scoreReporter.value = score;
-	[scoreReporter reportScoreWithCompletionHandler: ^(NSError *error)
-     { if (error != nil)
-     {
-         // handle the reporting error
-     }
-         
-         // [self callDelegateOnMainThread: @selector(scoreReported:) withArg: NULL error: error];
-	 }];
+    GKScore *scoreReporter = [[GKScore alloc] initWithCategory:category];
+    scoreReporter.value = score;
+    scoreReporter.context = 0;
+    
+    [scoreReporter reportScoreWithCompletionHandler:^(NSError *error) {
+        
+    }];
 }
+
 
 #define SYSTEM_VERSION_LESS_THAN(v) ([[[UIDevice currentDevice] systemVersion] \
 compare:v options:NSNumericSearch] == NSOrderedAscending)
 
 - (void)authenticateLocalUser {
     
-    if (!gameCenterAvailable) return;
-    
-    
     GKLocalPlayer *localPlayer = [GKLocalPlayer localPlayer];
-    if (SYSTEM_VERSION_LESS_THAN(@"6.0"))
-    {
-        // ios 5.x and below
-        [localPlayer authenticateWithCompletionHandler:^(NSError *error)
-         {
-             [self checkLocalPlayer];
-         }];
-    }
-    else
-    {
-        // ios 6.0 and above
-        [localPlayer setAuthenticateHandler:(^(UIViewController* viewcontroller, NSError *error) {
-            if (!error && viewcontroller)
-            {
-                [self presentViewController:viewcontroller animated:YES completion:nil];
-            }
-            else
-            {
-                [self checkLocalPlayer];
-            }
-        })];
-    }
+    [localPlayer authenticateWithCompletionHandler:^(NSError *error) {
+        if (localPlayer.isAuthenticated)
+        {
+            // Player was successfully authenticated.
+            // Perform additional tasks for the authenticated player.
+        }
+    }];
 }
 
 

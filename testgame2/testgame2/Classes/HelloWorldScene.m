@@ -12,6 +12,7 @@
 #import "chipmunk.h"
 #import "CCAnimation.h"
 #import <CoreMotion/CoreMotion.h>
+#import "GameCenterFiles.h"
 
 
 
@@ -287,6 +288,7 @@
          
          //Sets up live and score for the game to start with
          _lives = 0;
+         
          _score              = 0;
          _label              = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d", _score]
                                                   fontName:@"Super Mario Bros Alphabet"
@@ -366,6 +368,8 @@
         message = @"Winner!!!";
     } else if (endReason == kEndReasonLose) {
         message = @"You lose!";
+        [[GameCenterFiles sharedInstance]
+         reportScore:_score forCategory:@"com.johnplank211.testgame2.HighScore"];
     }
     
  

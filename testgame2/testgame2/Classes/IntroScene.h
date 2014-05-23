@@ -23,6 +23,14 @@
  */
 @interface IntroScene : CCScene <GKLeaderboardViewControllerDelegate, GKAchievementViewControllerDelegate>
 
+{
+   
+    CCTextField *enterName;
+    CCLabelTTF * label1;
+    NSString *name;
+    
+}
+
     //@property (nonatomic,retain) GameCenterFiles *gameCenterManager;
 
 // -----------------------------------------------------------------------

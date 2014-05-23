@@ -12,6 +12,12 @@
 #import "cocos2d-ui.h"
 
 @interface LeaderBoard : CCScene
+{
+    CCLabelTTF * label1;
+    CCLabelTTF * label2;
+    CCLabelTTF * label3;
+    NSString *name;
+}
 
 + (LeaderBoard *)scene;
 - (id)init;

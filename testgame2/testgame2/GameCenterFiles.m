@@ -101,15 +101,15 @@ static GameCenterFiles *sharedHelper = nil;
     
 }
 
-- (void) reportScore: (int64_t) score forLeaderboardID: (NSString*) category
+
+- (void) reportScore: (int64_t) score forCategory: (NSString*) category
 {
-    GKScore *scoreReporter = [[GKScore alloc] initWithCategory:category];
-    scoreReporter.value = score;
-    scoreReporter.context = 0;
-    
-    [scoreReporter reportScoreWithCompletionHandler:^(NSError *error) {
-        
-    }];
+	GKScore *scoreReporter = [[GKScore alloc] initWithCategory:category];
+	scoreReporter.value = score;
+	[scoreReporter reportScoreWithCompletionHandler: ^(NSError *error)
+	 {
+		 //[self callDelegateOnMainThread: @selector(scoreReported:) withArg: NULL error: error];
+	 }];
 }
 
 
@@ -245,5 +245,21 @@ compare:v options:NSNumericSearch] == NSOrderedAscending)
     matchStarted = NO;
     [delegate matchEnded];
 }
+
+- (void)showGameCenter
+{
+    GKGameCenterViewController *gameCenterController = [[GKGameCenterViewController alloc] init];
+    if (gameCenterController != nil)
+    {
+        gameCenterController.gameCenterDelegate = self;
+        [[CCDirector sharedDirector] presentViewController: gameCenterController animated: YES completion:nil];
+    }
+}
+    
+- (void)gameCenterViewControllerDidFinish:(GKGameCenterViewController *)gameCenterViewController
+{
+        [[CCDirector sharedDirector] dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 @end

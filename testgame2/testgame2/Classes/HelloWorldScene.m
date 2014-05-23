@@ -13,6 +13,8 @@
 #import "CCAnimation.h"
 #import <CoreMotion/CoreMotion.h>
 #import "GameCenterFiles.h"
+#import "RWGameData.h"
+
 
 
 
@@ -25,6 +27,8 @@
     CCSprite *_sprite;
     CCPhysicsNode *_physicsWorld;
     CMMotionManager *_motionManager;
+    
+
     
 }
 
@@ -85,12 +89,6 @@
     
     [[OALSimpleAudio sharedInstance] playEffect:@"boom.wav"];
 
-//    if (_score >= 0)
-//    {
-//        
-//        [self endScene:kEndReasonWin];
-//    }
-    
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"boom.plist"];
     
     CCSpriteBatchNode *spriteSheet = [CCSpriteBatchNode batchNodeWithFile:@"boom.png"];
@@ -118,6 +116,19 @@
     
     //Adds kill score everytime ufo is hit
     _score++;
+    
+    //[scorelabel setString:[NSString stringWithFormat:@"score: %d",_score]];
+    [[NSUserDefaults standardUserDefaults] setInteger:_score forKey:@"score_key"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [[NSUserDefaults standardUserDefaults] setInteger:_score forKey:@"high_score_key"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    
+    //[RWGameData sharedGameData].score2 += 5;
+   
+        
+    
     [_label setString:[NSString stringWithFormat:@"score: %d",_score]];
     
     return YES;
@@ -237,11 +248,14 @@
 
 
 
+
 // Adds our hero plane to the scene and the physics world
 - (id)init
 {
     
      if ((self=[super init])) {
+         
+        
 
          
          _motionManager = [[CMMotionManager alloc] init];
@@ -287,12 +301,23 @@
          
          
          //Sets up live and score for the game to start with
+         
+         int savedScore = [[NSUserDefaults standardUserDefaults] integerForKey:@"score_key"];
+         
+         
          _lives = 0;
          
+         
+         
          _score              = 0;
+         
+       
+         
          _label              = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d", _score]
                                                   fontName:@"Super Mario Bros Alphabet"
                                                   fontSize:30.0f];
+         
+         
          _label.positionType = CCPositionTypeNormalized;
          _label.color        = [CCColor whiteColor];
          _label.position     = ccp(0.5f, 0.9f);
@@ -345,7 +370,10 @@
     
     newXPosition = clampf(newXPosition, 0, self.contentSize.width);
     plane.position = CGPointMake(newXPosition, plane.position.x);
-}
+    
+    
+    
+  }
 
 
 //restart game method
@@ -368,9 +396,18 @@
         message = @"Winner!!!";
     } else if (endReason == kEndReasonLose) {
         message = @"You lose!";
+        
         [[GameCenterFiles sharedInstance]
-         reportScore:_score forCategory:@"com.johnplank211.testgame2.HighScore"];
+        reportScore:_score  forCategory:@"com.johnplank211.testgame2.HighScore"];
     }
+    
+//    LeaderBoardClass *lbClass = [[LeaderBoardClass alloc] init];
+//    [lbClass reportScore:_score userName:@"wanker" scoreDate:[NSDate date]];
+//    
+//
+//    NSMutableArray *monthScores = [lbClass getTopScores:(@"month")];
+//    NSMutableArray *weekScores = [lbClass getTopScores:(@"week")];
+//    NSMutableArray *dayScores = [lbClass getTopScores:(@"day")];
     
  
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
@@ -391,6 +428,34 @@
     [self addChild:restartItem];
     
     [restartItem runAction:[CCActionScaleTo actionWithDuration:0.5 scale:1.0]];
+
+    
+    
+    
+//    int savedScore = [[NSUserDefaults standardUserDefaults] integerForKey:@"score_key"];
+//    
+//    _label              = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d", savedScore]
+//                                             fontName:@"Super Mario Bros Alphabet"
+//                                             fontSize:30.0f];
+//    
+//    
+//    _label.positionType = CCPositionTypeNormalized;
+//    _label.color        = [CCColor whiteColor];
+//    _label.position     = ccp(0.5f, 0.9f);
+//    
+//    [self addChild:_label];
+    
+    
+    
+    
+    
+    //    [[RWGameData sharedGameData] reset];
+   
+//    [RWGameData sharedGameData].highScore = MAX([RWGameData sharedGameData].score2,
+//                                                [RWGameData sharedGameData].highScore);
+//    
+//    [[RWGameData sharedGameData] save];
+
     
 }
 

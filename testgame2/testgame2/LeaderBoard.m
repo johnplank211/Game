@@ -7,6 +7,13 @@
 //
 
 #import "LeaderBoard.h"
+#import "HelloWorldScene.h"
+#import "IntroScene.h"
+
+#import "CreditScene.h"
+#import "Instructions.h"
+#import "GameCenterFiles.h"
+#import "RWGameData.h"
 
 @implementation LeaderBoard
 
@@ -18,8 +25,7 @@
     
     // CGSize windowSize = [[CCDirector sharedDirector] ];
     
-    CCSprite *background = [CCSprite spriteWithImageNamed:@"instructions.png"];
-    background.anchorPoint = ccp(0, 0);
+   CCNodeColor *background = [CCNodeColor nodeWithColor:[CCColor colorWithRed:0.2f green:0.2f blue:0.2f alpha:1.0f]];    
     [layer addChild:background z:-1];
     
     
@@ -28,6 +34,7 @@
     
 	return scene;
 }
+
 
 
 //adds the main menu button
@@ -41,12 +48,81 @@
         [backButton setTarget:self selector:@selector(onSpinningClicked:)];
         [self addChild:backButton];
         
+               
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         
+        name = [defaults objectForKey:@"name_key"];
+        
+
+        
+        label1              = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%@", name]
+                                                fontName:@"Super Mario Bros Alphabet"
+                                                fontSize:30.0f];
+        
+        
+        label1.positionType = CCPositionTypeNormalized;
+        label1.color        = [CCColor whiteColor];
+        label1.position     = ccp(0.5f, 0.35f);
+        
+        [self addChild:label1];
+        
+        
+        ////////////////////////////
+        int savedScoreN = [[NSUserDefaults standardUserDefaults] integerForKey:@"score_key"];
+        
+        label2              = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d", savedScoreN]
+                                                 fontName:@"Super Mario Bros Alphabet"
+                                                 fontSize:30.0f];
+        
+        label2.positionType = CCPositionTypeNormalized;
+        label2.color        = [CCColor whiteColor];
+        label2.position     = ccp(0.5f, 0.30f);
+        
+        [self addChild:label2];
+        
+        label3              = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Your High Score"]
+                                                 fontName:@"Super Mario Bros Alphabet"
+                                                 fontSize:30.0f];
+        
+        label3.positionType = CCPositionTypeNormalized;
+        label3.color        = [CCColor whiteColor];
+        label3.position     = ccp(0.5f, 0.50f);
+        
+        [self addChild:label3];
+        /////////////////////////////////
+        
+        ////////////////////////////
+        int savedScoreA = [[NSUserDefaults standardUserDefaults] integerForKey:@"high_score_key"];
+        
+        label3              = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d", savedScoreA]
+                                                 fontName:@"Super Mario Bros Alphabet"
+                                                 fontSize:30.0f];
+        
+        label3.positionType = CCPositionTypeNormalized;
+        label3.color        = [CCColor whiteColor];
+        label3.position     = ccp(0.5f, 0.25f);
+        
+        [self addChild:label3];
+        
+        label3              = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Your High Score"]
+                                                 fontName:@"Super Mario Bros Alphabet"
+                                                 fontSize:30.0f];
+        
+        label3.positionType = CCPositionTypeNormalized;
+        label3.color        = [CCColor whiteColor];
+        label3.position     = ccp(0.5f, 0.50f);
+        
+        [self addChild:label3];
+        /////////////////////////////////
+
+        
+        [[GameCenterFiles sharedInstance] showGameCenter];
         
     }
     
     return self;
 }
+
 
 - (void)onSpinningClicked:(id)sender
 {

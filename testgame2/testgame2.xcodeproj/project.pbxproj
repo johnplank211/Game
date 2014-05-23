@@ -18,6 +18,7 @@
 		B40FBE1C191188BA007551FC /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = B40FBE1B191188BA007551FC /* Default-Landscape@2x~ipad.png */; };
 		B413EDA0192D253F00E08CD0 /* GameCenterFiles.m in Sources */ = {isa = PBXBuildFile; fileRef = B413ED9F192D253F00E08CD0 /* GameCenterFiles.m */; };
 		B413EDA3192D876F00E08CD0 /* LeaderBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = B413EDA2192D876F00E08CD0 /* LeaderBoard.m */; };
+		B413EDA6192E6C0200E08CD0 /* RWGameData.m in Sources */ = {isa = PBXBuildFile; fileRef = B413EDA5192E6C0100E08CD0 /* RWGameData.m */; };
 		B41512F21923F83600ADD202 /* bomb-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = B41512F11923F83500ADD202 /* bomb-ipadhd.png */; };
 		B41512F41923F83A00ADD202 /* bomb.png in Resources */ = {isa = PBXBuildFile; fileRef = B41512F31923F83A00ADD202 /* bomb.png */; };
 		B41512F61923F85D00ADD202 /* bomb-568h.png in Resources */ = {isa = PBXBuildFile; fileRef = B41512F51923F85D00ADD202 /* bomb-568h.png */; };
@@ -68,6 +69,10 @@
 		B498642218F65AC50051C6F9 /* bullet-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = B498642118F65AC50051C6F9 /* bullet-ipad.png */; };
 		B498642418F6DA3C0051C6F9 /* boom.wav in Resources */ = {isa = PBXBuildFile; fileRef = B498642318F6DA3C0051C6F9 /* boom.wav */; };
 		B498642618F6DA560051C6F9 /* gunfire.wav in Resources */ = {isa = PBXBuildFile; fileRef = B498642518F6DA560051C6F9 /* gunfire.wav */; };
+		B4BF23CD192EA672007B95F2 /* LeaderBoardClass.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BF23CA192EA672007B95F2 /* LeaderBoardClass.m */; };
+		B4BF23CE192EA672007B95F2 /* LeaderBoardScore.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BF23CC192EA672007B95F2 /* LeaderBoardScore.m */; };
+		B4BF23D0192ED504007B95F2 /* blank.png in Resources */ = {isa = PBXBuildFile; fileRef = B4BF23CF192ED504007B95F2 /* blank.png */; };
+		B4BF23D2192ED672007B95F2 /* blanky.png in Resources */ = {isa = PBXBuildFile; fileRef = B4BF23D1192ED672007B95F2 /* blanky.png */; };
 		B4D474FF18EE17B4008E2BE8 /* laser.wav in Resources */ = {isa = PBXBuildFile; fileRef = B4D474FE18EE17B4008E2BE8 /* laser.wav */; };
 		B4E06DFE18EC6125004FA9EB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4E06DFD18EC6125004FA9EB /* QuartzCore.framework */; };
 		B4E06E0018EC6125004FA9EB /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4E06DFF18EC6125004FA9EB /* OpenGLES.framework */; };
@@ -291,6 +296,8 @@
 		B413ED9F192D253F00E08CD0 /* GameCenterFiles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameCenterFiles.m; sourceTree = "<group>"; };
 		B413EDA1192D876F00E08CD0 /* LeaderBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaderBoard.h; sourceTree = "<group>"; };
 		B413EDA2192D876F00E08CD0 /* LeaderBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaderBoard.m; sourceTree = "<group>"; };
+		B413EDA4192E6C0100E08CD0 /* RWGameData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWGameData.h; sourceTree = "<group>"; };
+		B413EDA5192E6C0100E08CD0 /* RWGameData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWGameData.m; sourceTree = "<group>"; };
 		B41512F11923F83500ADD202 /* bomb-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bomb-ipadhd.png"; sourceTree = "<group>"; };
 		B41512F31923F83A00ADD202 /* bomb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bomb.png; sourceTree = "<group>"; };
 		B41512F51923F85D00ADD202 /* bomb-568h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bomb-568h.png"; sourceTree = "<group>"; };
@@ -342,6 +349,12 @@
 		B498642118F65AC50051C6F9 /* bullet-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bullet-ipad.png"; sourceTree = "<group>"; };
 		B498642318F6DA3C0051C6F9 /* boom.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = boom.wav; sourceTree = "<group>"; };
 		B498642518F6DA560051C6F9 /* gunfire.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gunfire.wav; sourceTree = "<group>"; };
+		B4BF23C9192EA672007B95F2 /* LeaderBoardClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaderBoardClass.h; sourceTree = "<group>"; };
+		B4BF23CA192EA672007B95F2 /* LeaderBoardClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaderBoardClass.m; sourceTree = "<group>"; };
+		B4BF23CB192EA672007B95F2 /* LeaderBoardScore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaderBoardScore.h; sourceTree = "<group>"; };
+		B4BF23CC192EA672007B95F2 /* LeaderBoardScore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaderBoardScore.m; sourceTree = "<group>"; };
+		B4BF23CF192ED504007B95F2 /* blank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blank.png; sourceTree = "<group>"; };
+		B4BF23D1192ED672007B95F2 /* blanky.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blanky.png; sourceTree = "<group>"; };
 		B4D474FE18EE17B4008E2BE8 /* laser.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = laser.wav; sourceTree = "<group>"; };
 		B4E06DFA18EC6125004FA9EB /* testgame2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testgame2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4E06DFD18EC6125004FA9EB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -812,6 +825,8 @@
 		B498642718FCB5600051C6F9 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				B4BF23D1192ED672007B95F2 /* blanky.png */,
+				B4BF23CF192ED504007B95F2 /* blank.png */,
 				B41512F71923F87200ADD202 /* bomb-hd.png */,
 				B41512F51923F85D00ADD202 /* bomb-568h.png */,
 				B41512F31923F83A00ADD202 /* bomb.png */,
@@ -1731,6 +1746,10 @@
 			isa = PBXGroup;
 			children = (
 				B4E070A518EC6129004FA9EB /* AppDelegate.h */,
+				B4BF23C9192EA672007B95F2 /* LeaderBoardClass.h */,
+				B4BF23CA192EA672007B95F2 /* LeaderBoardClass.m */,
+				B4BF23CB192EA672007B95F2 /* LeaderBoardScore.h */,
+				B4BF23CC192EA672007B95F2 /* LeaderBoardScore.m */,
 				B4E070A618EC6129004FA9EB /* AppDelegate.m */,
 				B4E070A818EC6129004FA9EB /* HelloWorldScene.h */,
 				B4E070A918EC6129004FA9EB /* HelloWorldScene.m */,
@@ -1744,6 +1763,8 @@
 				B413ED9F192D253F00E08CD0 /* GameCenterFiles.m */,
 				B413EDA1192D876F00E08CD0 /* LeaderBoard.h */,
 				B413EDA2192D876F00E08CD0 /* LeaderBoard.m */,
+				B413EDA4192E6C0100E08CD0 /* RWGameData.h */,
+				B413EDA5192E6C0100E08CD0 /* RWGameData.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1884,6 +1905,8 @@
 				B41512F61923F85D00ADD202 /* bomb-568h.png in Resources */,
 				B41512F81923F87200ADD202 /* bomb-hd.png in Resources */,
 				B41512FA1923F88500ADD202 /* bomb-ipad.png in Resources */,
+				B4BF23D0192ED504007B95F2 /* blank.png in Resources */,
+				B4BF23D2192ED672007B95F2 /* blanky.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2036,6 +2059,9 @@
 				B49714671912ED49007135CF /* Instructions.m in Sources */,
 				B413EDA0192D253F00E08CD0 /* GameCenterFiles.m in Sources */,
 				B413EDA3192D876F00E08CD0 /* LeaderBoard.m in Sources */,
+				B413EDA6192E6C0200E08CD0 /* RWGameData.m in Sources */,
+				B4BF23CD192EA672007B95F2 /* LeaderBoardClass.m in Sources */,
+				B4BF23CE192EA672007B95F2 /* LeaderBoardScore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -47,6 +47,8 @@
 - (void) submitAchievement: (NSString*) identifier percentComplete: (double) percentComplete;
 
 - (void) resetAchievements;
+- (void)showGameCenter;
+- (void)gameCenterViewControllerDidFinish:(GKGameCenterViewController *)gameCenterViewController;
 
 
 

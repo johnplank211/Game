@@ -13,6 +13,7 @@
 #import "CreditScene.h"
 #import "Instructions.h"
 #import "GameCenterFiles.h"
+#import "LeaderBoard.h"
 
 
 
@@ -79,12 +80,48 @@
     [self addChild:instructionButton];
     
     // instructions scene button
-    CCButton *LocalLeaderBoardButton = [CCButton buttonWithTitle:@"[ Local LeaderBoard ]" fontName:@"Verdana-Bold" fontSize:18.0f];
+    CCButton *LocalLeaderBoardButton = [CCButton buttonWithTitle:@"[ LeaderBoards ]" fontName:@"Verdana-Bold" fontSize:18.0f];
     LocalLeaderBoardButton.positionType = CCPositionTypeNormalized;
     LocalLeaderBoardButton.position = ccp(0.5f, 0.20f);
-    [LocalLeaderBoardButton setTarget:self selector:@selector(onInstructionsClicked:)];
+    [LocalLeaderBoardButton setTarget:self selector:@selector(onLeaderBoardClicked:)];
     [self addChild:LocalLeaderBoardButton];
-
+    
+    
+    //static NSString *const name = @"";
+    //name = @"";
+    
+    
+    CCSprite *textSprite = [CCSprite spriteWithImageNamed:@"blanky.png"];
+    enterName = [CCTextField textFieldWithSpriteFrame:[CCSpriteFrame frameWithImageNamed:@"blanky.png"]];
+    enterName.fontSize = 16.0f;
+    enterName.positionType = CCPositionTypeNormalized;
+    enterName.contentSize = CGSizeMake(100.0f, 50.0f);
+    enterName.preferredSize = textSprite.contentSize;
+    enterName.position = ccp(0.56f, 0.37f);
+    //enterName.string = name;
+    enterName.scale = 1.0f;
+    enterName.color = [CCColor blackColor];
+    [self addChild:enterName z:101];
+    
+    name = @"John is Awesome";
+    
+    
+    [[NSUserDefaults standardUserDefaults] setObject:name forKey:@"name_key"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    
+    
+    label1              = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Enter name"]
+                                             fontName:@"Super Mario Bros Alphabet"
+                                             fontSize:30.0f];
+    
+    
+    label1.positionType = CCPositionTypeNormalized;
+    label1.color        = [CCColor whiteColor];
+    label1.position     = ccp(0.45f, 0.40f);
+    
+    [self addChild:label1];
+    
     
     // done
 	return self;
@@ -129,6 +166,13 @@
 {
     // start spinning scene with transition
     [[CCDirector sharedDirector] replaceScene:[Instructions scene]
+                               withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionLeft duration:1.0f]];
+}
+
+- (void)onLeaderBoardClicked:(id)sender
+{
+    // start spinning scene with transition
+    [[CCDirector sharedDirector] replaceScene:[LeaderBoard scene]
                                withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionLeft duration:1.0f]];
 }
 

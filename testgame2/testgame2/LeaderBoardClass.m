@@ -12,12 +12,8 @@
 
 - (id) init {
     self = [super init];
-    LeaderBoardScore *lbScore = [[LeaderBoardScore alloc]init];
-    lbScore.score = 0;
-    lbScore.userName = @"Not yet filled";
-    lbScore.scoreDate = [NSDate date];
-    
-    _topScores = [NSMutableArray arrayWithObjects:lbScore, lbScore, lbScore, lbScore, nil];
+    _topScores = [[NSMutableArray alloc] init];
+    [self loadTopScores];
     return self;
 }
 
@@ -30,14 +26,7 @@
     
     [_topScores addObject:lbScore];
     
-    static NSString* filePath = nil;
-    if (!filePath) {
-        filePath =
-        [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]
-         stringByAppendingPathComponent:@"topscores"];
-    }
-    
-    [_topScores writeToFile:filePath atomically:false];
+    [self saveToFile];
     
     NSMutableArray *dailyScores = [self getTopScores:@"day"];
     NSMutableArray *weeklyScores = [self getTopScores:@"week"];
@@ -99,6 +88,80 @@
     NSString *happy = @"Fart";
     return scopedTopScores;
 
+}
+
+- (void)saveToFile
+{
+    static NSString* filePath = nil;
+    static NSString* userNamePath = nil;
+    static NSString* scorePath = nil;
+    static NSString* scoreDatePath = nil;
+
+    if (!filePath) {
+        userNamePath =
+        [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]
+         stringByAppendingPathComponent:@"username"];
+        scorePath =
+        [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]
+         stringByAppendingPathComponent:@"score"];
+        scoreDatePath =
+        [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]
+         stringByAppendingPathComponent:@"scoredate"];
+    }
+    
+    NSMutableArray *userNames = [[NSMutableArray alloc]init];
+    NSMutableArray *scores = [[NSMutableArray alloc]init];
+    NSMutableArray *scoreDates = [[NSMutableArray alloc]init];
+    
+    for (int i  =0; i< [_topScores count]; i++)
+    {
+        LeaderBoardScore *currentScore = _topScores[i];
+        
+        NSNumber *tempNumberScore = [NSNumber numberWithUnsignedLongLong:currentScore.score];
+        NSString *scoreString = [tempNumberScore stringValue];
+        
+        [userNames addObject:currentScore.userName];
+        [scores addObject:scoreString];
+        [scoreDates addObject:currentScore.scoreDate];
+    }
+    
+    [userNames writeToFile:userNamePath atomically:false];
+    [scores writeToFile:scorePath atomically:false];
+    [scoreDatePath writeToFile:scoreDatePath atomically:false];
+}
+
+-(void)loadTopScores
+{
+    static NSString* filePath = nil;
+    static NSString* userNamePath = nil;
+    static NSString* scorePath = nil;
+    static NSString* scoreDatePath = nil;
+    
+    if (!filePath) {
+        userNamePath =
+        [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]
+         stringByAppendingPathComponent:@"username"];
+        scorePath =
+        [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]
+         stringByAppendingPathComponent:@"score"];
+        scoreDatePath =
+        [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]
+         stringByAppendingPathComponent:@"scoredate"];
+    }
+    
+    NSMutableArray *scores = [[NSMutableArray alloc]init];
+    NSMutableArray *scoreDates = [[NSMutableArray alloc]init];
+    
+   
+    NSMutableArray *userNames = [[NSMutableArray alloc] initWithContentsOfFile:userNamePath];
+    for (int i = 0; i<[userNames count]; i++)
+    {
+        LeaderBoardScore *lbScore = [[LeaderBoardScore alloc] init];
+        lbScore.UserName = userNames[i];
+        [_topScores addObject:lbScore];
+    }
+    
+    NSString *test = @"fart";
 }
 
 

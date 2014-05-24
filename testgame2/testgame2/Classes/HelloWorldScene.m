@@ -121,8 +121,7 @@
     [[NSUserDefaults standardUserDefaults] setInteger:_score forKey:@"score_key"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
-    [[NSUserDefaults standardUserDefaults] setInteger:_score forKey:@"high_score_key"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    
     
     
     //[RWGameData sharedGameData].score2 += 5;
@@ -403,7 +402,7 @@
     
 //    LeaderBoardClass *lbClass = [[LeaderBoardClass alloc] init];
 //    [lbClass reportScore:_score userName:@"wanker" scoreDate:[NSDate date]];
-//    
+//
 //
 //    NSMutableArray *monthScores = [lbClass getTopScores:(@"month")];
 //    NSMutableArray *weekScores = [lbClass getTopScores:(@"week")];

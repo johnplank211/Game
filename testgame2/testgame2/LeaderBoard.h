@@ -17,7 +17,10 @@
     CCLabelTTF * label2;
     CCLabelTTF * label3;
     NSString *name;
+    int64_t _score2;
 }
+
+@property (nonatomic, assign) int64_t _score2;
 
 + (LeaderBoard *)scene;
 - (id)init;

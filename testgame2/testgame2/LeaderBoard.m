@@ -80,29 +80,37 @@
         
         [self addChild:label2];
         
-        label3              = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Your High Score"]
-                                                 fontName:@"Super Mario Bros Alphabet"
-                                                 fontSize:30.0f];
+//        label3              = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Your High Score"]
+//                                                 fontName:@"Super Mario Bros Alphabet"
+//                                                 fontSize:30.0f];
+//        
+//        label3.positionType = CCPositionTypeNormalized;
+//        label3.color        = [CCColor whiteColor];
+//        label3.position     = ccp(0.5f, 0.50f);
         
-        label3.positionType = CCPositionTypeNormalized;
-        label3.color        = [CCColor whiteColor];
-        label3.position     = ccp(0.5f, 0.50f);
-        
-        [self addChild:label3];
+ //       [self addChild:label3];
         /////////////////////////////////
         
         ////////////////////////////
+        
+        
+        
+        [[NSUserDefaults standardUserDefaults] setInteger:savedScoreN forKey:@"high_score_key"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        //////////////////////////////
+        
         int savedScoreA = [[NSUserDefaults standardUserDefaults] integerForKey:@"high_score_key"];
         
-        label3              = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d", savedScoreA]
-                                                 fontName:@"Super Mario Bros Alphabet"
-                                                 fontSize:30.0f];
-        
-        label3.positionType = CCPositionTypeNormalized;
-        label3.color        = [CCColor whiteColor];
-        label3.position     = ccp(0.5f, 0.25f);
-        
-        [self addChild:label3];
+//        label3              = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d", savedScoreA]
+//                                                 fontName:@"Super Mario Bros Alphabet"
+//                                                 fontSize:30.0f];
+//        
+//        label3.positionType = CCPositionTypeNormalized;
+//        label3.color        = [CCColor whiteColor];
+//        label3.position     = ccp(0.5f, 0.25f);
+//        
+//        [self addChild:label3];
         
         label3              = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Your High Score"]
                                                  fontName:@"Super Mario Bros Alphabet"
@@ -111,6 +119,19 @@
         label3.positionType = CCPositionTypeNormalized;
         label3.color        = [CCColor whiteColor];
         label3.position     = ccp(0.5f, 0.50f);
+        
+        
+        
+        if (savedScoreA > savedScoreN)
+        {
+            [self addChild:label3];
+
+        } else if (savedScoreA < savedScoreN)
+        {
+            [self addChild:label2];
+        }
+        
+        
         
         [self addChild:label3];
         /////////////////////////////////

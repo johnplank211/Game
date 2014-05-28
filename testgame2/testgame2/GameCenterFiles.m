@@ -261,5 +261,23 @@ compare:v options:NSNumericSearch] == NSOrderedAscending)
         [[CCDirector sharedDirector] dismissViewControllerAnimated:YES completion:nil];
 }
 
+-(void)sendAchievement:(GKAchievement *)achievement {
+    
+    achievement.percentComplete = 100.0;   //Indicates the achievement is done
+    achievement.showsCompletionBanner = YES;    //Indicate that a banner should be shown
+    [achievement reportAchievementWithCompletionHandler:
+     ^(NSError *error) {
+         dispatch_async(dispatch_get_main_queue(), ^(void)
+                        {
+                            if (error == NULL) {
+                                NSLog(@"Successfully sent archievement!");
+                            } else {
+                                NSLog(@"Achievement failed to send... will try again \
+                                      later.  Reason: %@", error.localizedDescription);
+                            }
+                        });
+     }];
+}
+
 
 @end

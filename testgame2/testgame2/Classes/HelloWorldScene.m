@@ -14,6 +14,7 @@
 #import <CoreMotion/CoreMotion.h>
 #import "GameCenterFiles.h"
 #import "RWGameData.h"
+#import "Acheivement.h"
 
 
 
@@ -27,6 +28,8 @@
     CCSprite *_sprite;
     CCPhysicsNode *_physicsWorld;
     CMMotionManager *_motionManager;
+    Acheivement *_achieve;
+    NSString *_userName;
     
 
     
@@ -254,21 +257,14 @@
     
      if ((self=[super init])) {
          
-        
-
+         _achieve = [[Acheivement alloc] init];
+         
+         _userName = @"playerOne";
          
          _motionManager = [[CMMotionManager alloc] init];
-      
-         
-      //CGSize winSize = [CCDirector sharedDirector].viewSize;
-        
-         
-         
-         
+               
         self.plane = [CCSprite spriteWithImageNamed:@"planeii.png"];
-       // plane.position = ccp(plane.contentSize.width/2, winSize.height/2);
-         
-
+      
          _physicsWorld = [CCPhysicsNode node];
          _physicsWorld.gravity = ccp(0,0);
          _physicsWorld.collisionDelegate = self;
@@ -289,13 +285,14 @@
                  
          //[self schedule:@selector(gameLogic:) interval:1];
          
+         
+         
          [self schedule:@selector(gameLogic:) interval:2 repeat:30 delay:5];
          [self schedule:@selector(gameLogic2:) interval:1.5 repeat:45 delay:35];
          [self schedule:@selector(gameLogic3:) interval:1 repeat:60 delay:65];
          [self schedule:@selector(gameLogic4:) interval:.03 repeat:3150 delay:95];
          
-         
-         
+                 
          [self schedule:@selector(bonusLogic:) interval:8];
          
          
@@ -390,6 +387,26 @@
     CGSize winSize = [CCDirector sharedDirector].viewSize;
     
     
+    int *achievementscore = [_achieve getKillCount:_userName];
+    if (achievementscore < 5 && achievementscore + _score >= 5)
+    {
+        // Display the acheievement logic
+        NSString *test = @"poo00000";
+    }
+    
+    if (achievementscore >= 20)
+    {
+        GameCenterFiles *GCF;
+        GCF = [[GameCenterFiles alloc] init];
+        [GCF submitAchievement:@"com.johnplank211.testgame2.RB" percentComplete:100];
+        NSLog(@"pooooop");
+    }
+    
+    
+    [_achieve writeKillCount:_userName currentKills:_score];
+    
+    NSString *booze;
+    
     NSString *message;
     if (endReason == kEndReasonWin) {
         message = @"Winner!!!";
@@ -430,33 +447,15 @@
 
     
     
+    if ((_lives == 0) && (_score == 0))
+    {
+        GameCenterFiles *GCF;
+        GCF = [[GameCenterFiles alloc] init];
+        [GCF submitAchievement:@"com.johnplank211.testgame2.SGATS" percentComplete:100];
+        //NSLog(@"u suck big time");
+    }
     
-//    int savedScore = [[NSUserDefaults standardUserDefaults] integerForKey:@"score_key"];
-//    
-//    _label              = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d", savedScore]
-//                                             fontName:@"Super Mario Bros Alphabet"
-//                                             fontSize:30.0f];
-//    
-//    
-//    _label.positionType = CCPositionTypeNormalized;
-//    _label.color        = [CCColor whiteColor];
-//    _label.position     = ccp(0.5f, 0.9f);
-//    
-//    [self addChild:_label];
-    
-    
-    
-    
-    
-    //    [[RWGameData sharedGameData] reset];
-   
-//    [RWGameData sharedGameData].highScore = MAX([RWGameData sharedGameData].score2,
-//                                                [RWGameData sharedGameData].highScore);
-//    
-//    [[RWGameData sharedGameData] save];
-
-    
-}
+    }
 
 
 
@@ -464,27 +463,63 @@
 
 -(void)gameLogic:(CCTime)dt
 {
-    [self addMonster];
+       [self addMonster];
 }
 
 -(void)gameLogic2:(CCTime)dt
-{    
-    [self addMonster];    
+{
+    if (_lives == 0)
+    {
+        
+        GameCenterFiles *GCF;
+        GCF = [[GameCenterFiles alloc] init];
+        [GCF submitAchievement:@"com.johnplank211.testgame2.PassFirstWave" percentComplete:100];
+        [self addMonster];
+        
+    }
+    
+    
+    if (![_achieve checkCompletionAcheivement:_userName])
+    {
+        [_achieve writeCompletionAcheivement:_userName];
+        // Add logic to alert user that they acheived
+    }
 }
 
 -(void)gameLogic3:(CCTime)dt
 {
-    [self addMonster];
+    if (_lives == 0)
+    {
+        [self addMonster];
+    }
+    
+    if (_score == 0)
+    {
+        GameCenterFiles *GCF;
+        GCF = [[GameCenterFiles alloc] init];
+        [GCF submitAchievement:@"com.johnplank211.testgame2.pacifist" percentComplete:100];
+        [self addMonster];
+    }
+
+
 }
 
 -(void)gameLogic4:(CCTime)dt
 {
-    [self addMonster];
+    if (_lives == 0)
+    {
+        [self addMonster];
+    }
+
 }
 
 -(void)bonusLogic:(CCTime)dt
 {
-    [self addBonus];
+    if (_lives == 0)
+    {
+        [self addBonus];
+    }
+
 }
 
 //checks for touches on the plane and fire projectiles
@@ -501,12 +536,19 @@
     
 //        distance = sqrtf(distance);
 //    
-//        if (distance <= 55)
+//        if (distance <= 55) && (_lives = 0)
 //        {
             CCSprite *projectile = [CCSprite spriteWithImageNamed:@"bullet.png"];
             projectile.position = self.plane.position;
-            
+    
+            if (_lives <= 0)
+            {
+    
             [_physicsWorld addChild:projectile];
+                
+            } else {
+                
+            }
             
             projectile.physicsBody = [CCPhysicsBody bodyWithCircleOfRadius:projectile.contentSize.width/2.0f andCenter:projectile.anchorPointInPoints];
             

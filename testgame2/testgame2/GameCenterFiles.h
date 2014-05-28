@@ -49,6 +49,7 @@
 - (void) resetAchievements;
 - (void)showGameCenter;
 - (void)gameCenterViewControllerDidFinish:(GKGameCenterViewController *)gameCenterViewController;
+-(void)sendAchievement:(GKAchievement *)achievement;
 
 
 

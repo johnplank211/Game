@@ -396,6 +396,7 @@
     
     if (achievementscore >= 20)
     {
+        ///////This is the achievement that increments. In an actual game I would make this like a 1,000, but for testing purposes I made ///it 21
         GameCenterFiles *GCF;
         GCF = [[GameCenterFiles alloc] init];
         [GCF submitAchievement:@"com.johnplank211.testgame2.RB" percentComplete:100];
@@ -446,13 +447,14 @@
     [restartItem runAction:[CCActionScaleTo actionWithDuration:0.5 scale:1.0]];
 
     
-    
+    //////This is the negative achievement. Basically if u die without killing anyone. This could also be gotten with
+    ///////The measurment achievement Pacifist where u make it 2 levels without killing anyone.
     if ((_lives == 0) && (_score == 0))
     {
         GameCenterFiles *GCF;
         GCF = [[GameCenterFiles alloc] init];
         [GCF submitAchievement:@"com.johnplank211.testgame2.SGATS" percentComplete:100];
-        //NSLog(@"u suck big time");
+        NSLog(@"I'm a loser");
     }
     
     }
@@ -470,7 +472,7 @@
 {
     if (_lives == 0)
     {
-        
+        ////This is the achievement for completion. Making it pass the first wave. 
         GameCenterFiles *GCF;
         GCF = [[GameCenterFiles alloc] init];
         [GCF submitAchievement:@"com.johnplank211.testgame2.PassFirstWave" percentComplete:100];
@@ -495,6 +497,7 @@
     
     if (_score == 0)
     {
+        /////achievement is gotten if player makes it without die or killing anyone
         GameCenterFiles *GCF;
         GCF = [[GameCenterFiles alloc] init];
         [GCF submitAchievement:@"com.johnplank211.testgame2.pacifist" percentComplete:100];
